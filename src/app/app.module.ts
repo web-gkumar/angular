@@ -47,7 +47,7 @@ import { FooterComponent } from './include/footer/footer.component';
     ToastrModule.forRoot(),
     DashboardModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
