@@ -1,0 +1,5 @@
+<section class="banner">
+    <swiper [slidesPerView]="'auto'" [spaceBetween]="0" [loop]="true" [pagination]="{clickable: true}" [navigation]="true" class="mySwiper">
+        <ng-template swiperSlide *ngFor="let data of slidderimg"><img [src]="data"></ng-template>
+    </swiper>
+</section>
