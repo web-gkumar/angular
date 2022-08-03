@@ -1,9 +1,9 @@
-<h2 mat-dialog-title>Add Products</h2>
+<!-- <h2 mat-dialog-title>Add Products</h2>
 <mat-dialog-content class="mat-typography">
     <form [formGroup]="addProductForm">
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Enter Your Name</mat-label>
-            <input matInput formControlName="fullName" placeholder="Name" required>
+            <input matInput formControlName="name" placeholder="Name" required>
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Enter Your Email</mat-label>
@@ -11,11 +11,33 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Enter Your Mobile Number</mat-label>
-            <input matInput formControlName="mobileNumber" placeholder="Mobile Number" required>
+            <input matInput formControlName="mobile" placeholder="Mobile Number" required>
         </mat-form-field>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-flat-button color="primary" [mat-dialog-close]="true" [disabled]="!addProductForm.valid" (click)="submitStudentData()">Submit</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->
+
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" formControlName="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label>Contact</label>
+        <input type="text" formControlName="contact" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Create</button>
+    </div>
+</form>
