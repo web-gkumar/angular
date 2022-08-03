@@ -2,28 +2,32 @@
     <mat-card>
         <mat-card-title-group>
             <mat-card-title>Product List</mat-card-title>
-            <button mat-flat-button color="primary" (click)="openDialog()">Add Products</button>
+            <button mat-flat-button color="primary" (click)="addProducts()">Add Products</button>
         </mat-card-title-group>
         <hr>
         <mat-card-content>
-            <table class="w-100" *ngIf="products != ''">
+            <table class="table">
+              <thead>
                 <tr>
-                    <th>Product Id</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Action</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Contact</th>
+                  <th scope="col">Action </th>
                 </tr>
-                <tr *ngFor="let data of products">
-                    <td>{{data.id}}</td>
-                    <td>{{data.fullName}}</td>
-                    <td>{{data.email}}</td>
-                    <td>{{data.mobileNumber}}</td>
-                    <td>
-                        <button mat-icon-button color="primary" routerLink="/edit-student/{{ data.id }}"><mat-icon>edit</mat-icon></button>
-                        <button mat-icon-button color="accent" (click)="deleteStudent(data)"><mat-icon>delete</mat-icon></button>
-                    </td>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of Users; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.contact }}</td>
+                  <td>
+                    <span (click)="removeUser(user)" class="text-danger">Delete</span> &nbsp;
+                    <span routerLink="/edit-product/{{user.id}}" class="text-primary">Edit</span>
+                  </td>
                 </tr>
+              </tbody>
             </table>
 
         </mat-card-content>

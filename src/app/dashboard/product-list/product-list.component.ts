@@ -3,7 +3,7 @@ import { CrudService } from '../../shared/services/crud.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { AddProductComponent } from '../add-product/add-product.component';
-
+import { EditProductComponent } from '../edit-product/edit-product.component';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +12,7 @@ import { AddProductComponent } from '../add-product/add-product.component';
 })
 export class ProductListComponent implements OnInit {
 
-  products: any;
+  Users:any;
   constructor(
     public crudApi: CrudService,
     public dialog: MatDialog,
@@ -20,26 +20,21 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.crudApi.GetProductsList().snapshotChanges().subscribe((data: any[]) => {
-      this.products = [];
-      data.forEach((item) => {
-        let a = item.payload.toJSON();
-        a['id'] = item.key;
-        this.products.push(a as any);
+    this.crudApi.getUserList().subscribe((res) => {
+      this.Users = res.map((e) => {
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as any),
+        };
       });
     });
   }
 
-  deleteStudent(products: any) {
-    if (window.confirm('Are sure you want to delete this student ?')) {
-      this.crudApi.DeleteProducts(products.id);
-      this.toastr.success(products.firstName + ' successfully deleted!');
-    }
-  }
+  removeUser = (user:any) => this.crudApi.deleteUser(user);
 
-
-  openDialog(): void {
+  addProducts(): void {
     this.dialog.open(AddProductComponent);
   }
+
 
 }

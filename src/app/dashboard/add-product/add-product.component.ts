@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../shared/services/crud.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-add-product',
@@ -10,41 +11,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddProductComponent implements OnInit {
 
-  public addProductForm!: FormGroup;
-  
+  public userForm: FormGroup;
+
   constructor(
-    public crudApi: CrudService,
-    public fb: FormBuilder,
-    public toastr: ToastrService
-  ) { }
-
-
-  ngOnInit() {
-    this.crudApi.GetProductsList();
-    this.productForm();
-  }
-
-
-  productForm() {
-    this.addProductForm = this.fb.group({
-      fullName: [''],
+    public crudService: CrudService,
+    public formBuilder: FormBuilder,
+    public router: Router
+  ) { 
+    this.userForm = this.formBuilder.group({
+      name: [''],
       email: [''],
-      mobileNumber: [''],
-    });
+      contact: ['']
+    })      
   }
 
-  ResetForm() {
-    this.addProductForm.reset();
+  ngOnInit(): void {
   }
 
-  submitStudentData() {
-    this.crudApi.AddSProducts(this.addProductForm.value);
-    this.toastr.success(
-      this.addProductForm.controls['fullName'].value + ' successfully added!'
-    );
-    this.ResetForm();
-  }
-
+  onSubmit() {
+    this.crudService.createUser(this.userForm.value);
+   };
 
 
 
