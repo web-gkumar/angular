@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../../shared/services/crud.service';
-import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from "@angular/router";
 
 @Component({
@@ -16,13 +15,18 @@ export class AddProductComponent implements OnInit {
   constructor(
     public crudService: CrudService,
     public formBuilder: FormBuilder,
-    public router: Router
-  ) { 
+  ) {
     this.userForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      contact: ['']
-    })      
+      productName: [''],
+      productCategory: [''],
+      productBrand: [''],
+      productPrice: [''],
+      ProductdiscountPrice: [''],
+      productImages: [''],
+      productStock: [''],
+      productDiscription: ['']
+
+    })
   }
 
   ngOnInit(): void {
@@ -30,8 +34,6 @@ export class AddProductComponent implements OnInit {
 
   onSubmit() {
     this.crudService.createUser(this.userForm.value);
-   };
-
-
+  };
 
 }
