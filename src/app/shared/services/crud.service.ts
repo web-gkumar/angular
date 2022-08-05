@@ -13,18 +13,18 @@ export class CrudService {
 
   getUserDoc(id: any) {
     return this.angularFirestore
-      .collection('user-collection').doc(id).valueChanges();
+      .collection('product-collection').doc(id).valueChanges();
   }
 
   getUserList() {
     return this.angularFirestore
-      .collection('user-collection').snapshotChanges();
+      .collection('product-collection').snapshotChanges();
   }
 
-  createUser(user: any) {
+  createUser(product: any) {
     return new Promise<any>((resolve, reject) => {
       this.angularFirestore
-        .collection('user-collection').add(user).then( (response) => {
+        .collection('product-collection').add(product).then( (response) => {
             console.log(response);
           },
           (error) => reject(error)
@@ -32,16 +32,21 @@ export class CrudService {
     });
   }
 
-  deleteUser(user: any) {
+  deleteUser(product: any) {
     return this.angularFirestore
-      .collection('user-collection').doc(user.id).delete();
+      .collection('product-collection').doc(product.id).delete();
   }
 
-  updateUser(user: any, id: any) {
-    return this.angularFirestore.collection('user-collection').doc(id).update({
-      name: user.name,
-      email: user.email,
-      contact: user.contact,
+  updateUser(product: any, id: any) {
+    return this.angularFirestore.collection('product-collection').doc(id).update({
+      productName: product.name,
+      productCategory: product.category,
+      productBrand: product.brand,
+      productPrice: product.price,
+      ProductdiscountPrice: product.discount,
+      productImages: product.images,
+      productStock: product.stock,
+      productDiscription: product.discriptions
     });
   }
 
