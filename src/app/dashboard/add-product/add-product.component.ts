@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CrudService } from '../../shared/services/crud.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from "@angular/router";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-add-product',
@@ -9,11 +10,13 @@ import { Router } from "@angular/router";
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-
+  btnName = 'Save';
   public userForm: FormGroup;
 
   constructor(
     public crudService: CrudService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dailogRef: MatDialogRef<AddProductComponent>,
     public formBuilder: FormBuilder,
   ) {
     this.userForm = this.formBuilder.group({
@@ -30,10 +33,22 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.data) {
+      this.btnName = 'Update'
+      this.userForm.patchValue(this.data)
+    }
   }
 
-  onSubmit() {
-    this.crudService.createUser(this.userForm.value);
+  onCreateData() {
+    if (!this.data) {
+      this.crudService.createUser(this.userForm.value);
+    } else {
+      this.updateData()
+    }
   };
+
+  updateData() {
+    this.crudService.updateUser(this.userForm.value,this.data.id)
+  }
 
 }

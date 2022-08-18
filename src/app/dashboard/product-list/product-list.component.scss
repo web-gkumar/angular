@@ -1,0 +1,10 @@
+.productlist {
+    .productData {position:relative;
+        p { position:absolute;left:10px;top:10px;background:rgba(0,0,0,0.3);color:#fff;padding:5px;border-radius:3px;font-size:11px;}
+        .actionbtn {position:absolute;bottom:10px;right:10px;}
+        button{border:none;background:rgba(0,0,0,0.3);margin:5px;width:30px;height:30px;border-radius:100%;}
+        mat-icon {font-size:16px;color:#fff;width:auto;height:auto;}
+    }
+p {margin:5px 0;}
+
+}

@@ -22,6 +22,9 @@ import { SwiperModule } from 'swiper/angular';
 import { MaterialModule } from './material/material.module';
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { ProductsModule } from './products/products.module';
+
+
 
 // Component
 import { HeaderComponent } from './include/header/header.component';
@@ -46,6 +49,7 @@ import { FooterComponent } from './include/footer/footer.component';
     SwiperModule,
     ToastrModule.forRoot(),
     DashboardModule,
+    ProductsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

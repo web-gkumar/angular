@@ -10,13 +10,22 @@ import { AddProductComponent } from '../add-product/add-product.component';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
+  tableHead = ['Sr No', 'Image', 'Name', 'Category', 'Brand', 'Price', 'Discount Price', 'Available', 'productDiscription', 'Actions']
 
   Products:any;
   constructor(
     public dialog: MatDialog,
     public crudApi: CrudService,
     public toastr: ToastrService
-  ) { }
+  ) {
+  }
+
+
+  stockBg() {
+    if(this.Products.productStock == 'yes'){
+      console.log('Yes')
+    }
+  }
 
   ngOnInit() {
     this.crudApi.getUserList().subscribe((res) => {
@@ -30,14 +39,20 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  removeUser(user:any) {
+  removeData(user:any) {
     if (window.confirm('Are sure you want to delete this student ?')) {
       this.crudApi.deleteUser(user)
     }
   }
 
   addProduct() {
-    const dialogRef = this.dialog.open(AddProductComponent);
+    this.dialog.open(AddProductComponent);
+  }
+
+  updateData(rowData:any) {
+    this.dialog.open(AddProductComponent, {
+      data: rowData
+    });
   }
 
 

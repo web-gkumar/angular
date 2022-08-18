@@ -5,8 +5,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { AddInfoComponent } from './add-info/add-info.component';
+import { EditInfoComponent } from './edit-info/edit-info.component';
 
 
 
@@ -14,8 +16,10 @@ import { ProductListComponent } from './product-list/product-list.component';
   declarations: [
     ProfileComponent,
     AddProductComponent,
-    EditProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    UserInfoComponent,
+    AddInfoComponent,
+    EditInfoComponent
   ],
   imports: [
     CommonModule,

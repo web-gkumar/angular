@@ -1,45 +1,32 @@
-<section class="p-5">
-    <mat-card>
-        <mat-card-title-group>
-            <mat-card-title><span class="h6">Product List</span></mat-card-title>
-            <button mat-flat-button color="primary" (click)="addProduct()">Add Products</button>
-        </mat-card-title-group>
-        <hr>
-        <mat-card-content>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Sr No</th>
-                  <th scope="col">Product Name</th>
-                  <th scope="col">Product Category</th>
-                  <th scope="col">Product Brand</th>
-                  <th scope="col">Product Price</th>
-                  <th scope="col">Product Discount Price</th>
-                  <th scope="col">Product Images</th>
-                  <th scope="col">Product Available</th>
-                  <th scope="col">productDiscription</th>
-                  <th scope="col">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let data of Products; let i = index">
-                  <th scope="row">{{ i + 1 }}</th>
-                  <td>{{ data.productName }}</td>
-                  <td>{{ data.productCategory }}</td>
-                  <td>{{ data.productBrand }}</td>
-                  <td>{{ data.productPrice }}</td>
-                  <td>{{ data.ProductdiscountPrice }}</td>
-                  <td>{{ data.productImages }}</td>
-                  <td>{{ data.productStock }}</td>
-                  <td>{{ data.productDiscription }}</td>
-                  <td>
-                    <button mat-icon-button routerLink="/edit-product/{{data.id}}" color="primary"><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button (click)="removeUser(data)"color="warn"><mat-icon>delete</mat-icon></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-        </mat-card-content>
-    </mat-card>
+<section class="p-5 productlist">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title><span class="h6">Product List</span></mat-card-title>
+      <button mat-flat-button color="primary" (click)="addProduct()">Add Products</button>
+    </mat-card-title-group>
+    <hr>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-6 my-3" *ngFor="let data of Products; let i = index">
+          <div class="row gx-0 bg-light">
+            <div class="col-sm-5 productData">
+              <img src="assets/img/login.jpg">
+              <p>In Stock: {{ data.productStock }}</p>
+              <div class="actionbtn">
+                <button (click)="updateData(data)"><mat-icon>edit</mat-icon></button>
+                <button (click)="removeData(data)"><mat-icon>delete</mat-icon></button>
+              </div>
+            </div>
+            <div class="col-sm-7 p-3">
+              <h4 class="m-0"><strong>{{ data.productName }}</strong></h4>
+              <p><strong>Category:</strong> {{ data.productCategory }}</p>
+              <p><strong>Price:</strong> {{ data.productPrice | currency: 'INR':true}} <del class="ms-2">{{ data.ProductdiscountPrice |
+                  currency: 'INR':true}}</del></p>
+              <p><strong>Discriptions:</strong> {{ data.productDiscription }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </section>
