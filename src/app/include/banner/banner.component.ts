@@ -13,7 +13,7 @@ SwiperCore.use([Pagination, Navigation]);
 })
 export class BannerComponent implements OnInit {
 
-  slidderimg = ['assets/img/banner3.jpg', 'assets/img/banner2.jpg', 'assets/img/banner.jpg']
+  slidderimg = ['banner3.jpg', 'banner2.jpg', 'banner.jpg']
   constructor() { }
 
   ngOnInit(): void {

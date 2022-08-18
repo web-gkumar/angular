@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Student } from '../interface/student';
 
 
 @Injectable({
@@ -12,19 +11,16 @@ export class CrudService {
   constructor(private angularFirestore: AngularFirestore) { }
 
   getUserDoc(id: any) {
-    return this.angularFirestore
-      .collection('product-collection').doc(id).valueChanges();
+    return this.angularFirestore.collection('product-collection').doc(id).valueChanges();
   }
 
   getUserList() {
-    return this.angularFirestore
-      .collection('product-collection').snapshotChanges();
+    return this.angularFirestore.collection('product-collection').snapshotChanges();
   }
 
   createUser(product: any) {
     return new Promise<any>((resolve, reject) => {
-      this.angularFirestore
-        .collection('product-collection').add(product).then( (response) => {
+      this.angularFirestore.collection('product-collection').add(product).then( (response) => {
             console.log(response);
           },
           (error) => reject(error)
@@ -33,8 +29,7 @@ export class CrudService {
   }
 
   deleteUser(product: any) {
-    return this.angularFirestore
-      .collection('product-collection').doc(product.id).delete();
+    return this.angularFirestore.collection('product-collection').doc(product.id).delete();
   }
 
   updateUser(product: any, id: any) {

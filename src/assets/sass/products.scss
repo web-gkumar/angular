@@ -1,0 +1,26 @@
+
+/**---- Product Category --*/
+.productcategory {
+    .productcatitem {padding:50px 10px;color:$themecolor;}
+}
+/**---- Product List --*/
+.products {background:$themebg;
+    .productcatitem {padding:15px;border-radius:5px;height:100%;
+        img {width:140px;height:140px;object-fit:contain;margin-bottom:15px;cursor:pointer;}
+        h4 {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;cursor:pointer;}
+    }
+}
+
+/**---- Product Details --*/
+.productdetails {
+    .productinfo {
+        mat-icon {font-size:11px;width:auto;height:auto;color:green;}
+    }
+
+    .breadcrumb {text-transform:capitalize;
+        a {margin-right:10px;color:$themecolor;position:relative;font-size:11px;
+            &::after {content: '/';margin-left:10px;color:#999;}
+        }
+        span {color:#999;font-size:11px;}
+    }
+}

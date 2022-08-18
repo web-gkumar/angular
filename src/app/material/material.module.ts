@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
+
 
 
 const materialKit = [
@@ -35,7 +37,8 @@ const materialKit = [
       MatDialogModule,
       MatPaginatorModule,
       MatSelectModule,
-      MatChipsModule
+      MatChipsModule,
+      MatListModule
 ]
 
 

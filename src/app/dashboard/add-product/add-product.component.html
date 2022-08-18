@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>Add Product</h2>
-<mat-dialog-content class="mat-typography formlist">
+<mat-dialog-content class="mat-typography formlist" style="width:700px;">
     <form [formGroup]="userForm" novalidate>
         <div class="row">
             <div class="col-md-6 mb-2">
@@ -9,22 +9,19 @@
                 <input type="text" placeholder="Product Category" formControlName="productCategory" required>
             </div>
             <div class="col-md-6 mb-2">
-                <input type="text" placeholder="Product Brand" formControlName="productBrand" required>
-            </div>
-            <div class="col-md-6 mb-2">
                 <input type="text" placeholder="Product Price" formControlName="productPrice" required>
             </div>
             <div class="col-md-6 mb-2">
-                <input type="text" placeholder="Product Discount Price" formControlName="ProductdiscountPrice" required>
+                <input type="text" placeholder="Product Discount Price" formControlName="ProductdiscountPrice">
             </div>
             <div class="col-md-6 mb-2">
-                <input type="file" placeholder="Product Images" formControlName="productImages" required>
+                <input type="file" placeholder="Product Images" formControlName="productImages">
             </div>
             <div class="col-md-6 mb-2">
                 <select formControlName="productStock">
                     <option selected>Product Available / Not Available</option>
-                    <option>Available</option>
-                    <option>Not Available</option>
+                    <option>Yes</option>
+                    <option>No</option>
                 </select>
             </div>
             <div class="col-md-6 mb-2">
@@ -35,6 +32,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-flat-button color="primary" [disabled]="!userForm.valid" [mat-dialog-close]="true" cdkFocusInitial
-        (click)="onSubmit()">Create</button>
+    <button mat-flat-button color="primary"  [disabled]="!userForm.valid" [mat-dialog-close]="true" cdkFocusInitial (click)="onCreateData()">{{btnName}}</button>
 </mat-dialog-actions>
