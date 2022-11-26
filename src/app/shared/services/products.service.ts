@@ -6,13 +6,20 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
   providedIn: 'root'
 })
 export class ProductsService {
-  apiUrl: string = 'https://fakestoreapi.com/';
+  // https://fakeapi.platzi.com   dummy api used
+
+  
+  apiUrl:string = 'https://api.escuelajs.co/api/v1/'
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
   getAllCategory() {
-    return this.http.get(this.apiUrl + 'products/categories');
+    return this.http.get(this.apiUrl + 'categories');
+  }
+  
+  getSingleCategory(id:any) {
+    return this.http.get(this.apiUrl + 'categories/' + id + '/products');
   }
 
   getAllProducts() {
@@ -20,7 +27,7 @@ export class ProductsService {
   }
 
   getProductDetails(id:any) {
-    return this.http.get(this.apiUrl + 'products/' + id)
+    return this.http.get(this.apiUrl + id)
   }
 
 

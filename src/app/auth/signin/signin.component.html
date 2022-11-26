@@ -1,22 +1,28 @@
 <section class="login" style="background: url(assets/img/login.jpg) center center;">
     <div class="loginbox text-center">
         <form>
-            <h2 class="text-uppercase">Sign In</h2>
+            <h2 class="text-uppercase">{{issignin ? 'Sign In' : 'Sign Up'}}</h2>
+
             <mat-form-field appearance="outline">
-                <mat-label>User Id</mat-label>
+                <mat-label>Email Id</mat-label>
                 <input matInput placeholder="Email" #userName required>
             </mat-form-field>
+
+
             <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" #userPassword required>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+                <input matInput type="password" #userPassword required>
             </mat-form-field>
-            <button mat-raised-button color="primary" class="w-100" (click)="authService.SignIn(userName.value, userPassword.value)">Log In</button>
+
+
+
+            <button mat-raised-button color="primary" class="w-100" (click)="authService.SignIn(userName.value, userPassword.value)">{{issignin ? 'Login' : 'Sign Up'}}</button>
+
             <button mat-raised-button class="w-100 my-3" (click)="authService.GoogleAuth()">Log in with Google</button>
-            <div class="text-end mt-3"><a class="text-muted" routerLink="/forgot-password">Forgotten Password?</a></div>
+            <div class="text-end mt-3" *ngIf="issignin"><a class="text-muted" routerLink="/forgot-password">Forgotten Password?</a></div>
         </form>
-        <span class="text-muted">Don't have an account? <a class="text-dark" routerLink="/signup">Sign Up</a></span>
+        <span class="text-muted">{{issignin ? "Don't have an account?" : 'Already have an account?'}}
+            <a href="javascript:void(0)" class="text-dark" (click)="submitForm()">{{issignin ? 'Sign Up' : 'Login'}}</a>
+        </span>
     </div>
 </section>

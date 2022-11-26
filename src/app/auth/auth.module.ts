@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
+import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
@@ -12,13 +11,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 @NgModule({
   declarations: [
     SigninComponent,
-    SignupComponent,
     ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    AuthRoutingModule
+    RouterModule.forRoot([
+      { path: 'signin', component: SigninComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+    ])
   ]
 })
 export class AuthModule { }

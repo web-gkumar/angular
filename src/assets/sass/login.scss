@@ -1,0 +1,8 @@
+/*** Login and Sign Up ***/
+.login {height:100%;background-size:cover !important;display:flex;align-items:center;justify-content:center;
+    .loginbox {width:450px;}
+    form {border-radius:4px;padding:20px;background:#fff;margin-bottom:20px;}
+
+    .mat-form-field-appearance-outline .mat-form-field-wrapper {margin:0;}
+    .mat-form-field, .mat-form-field-infix {width:100%;}
+}

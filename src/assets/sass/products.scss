@@ -1,26 +1,30 @@
-
-/**---- Product Category --*/
+/**---- Home Product Category --*/
 .productcategory {
-    .productcatitem {padding:50px 10px;color:$themecolor;}
-}
-/**---- Product List --*/
-.products {background:$themebg;
-    .productcatitem {padding:15px;border-radius:5px;height:100%;
-        img {width:140px;height:140px;object-fit:contain;margin-bottom:15px;cursor:pointer;}
-        h4 {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;cursor:pointer;}
+    .catinfo {margin-top:-60px;position:relative;z-index:1;
+        h4 {color:$themecolor;font-size:16px;text-transform:uppercase;font-weight:700;}
+        h5 {font-weight:normal;font-size:14px;color:#7d7d7d;}
     }
 }
 
-/**---- Product Details --*/
-.productdetails {
-    .productinfo {
-        mat-icon {font-size:11px;width:auto;height:auto;color:green;}
+/**---- Home Page Featured Product --*/
+.featuredproduct {background:$themebg;
+    .mat-tab-nav-bar, .mat-tab-header {border:none;}
+    .mat-tab-list {background:#fff;border-radius:35px;max-width:640px;margin:auto;overflow:hidden;
+        .mat-ink-bar {display:none;}
+        .mat-tab-label-active {color:$themecolor}
+    }
+    mat-card {
+        .productimg {overflow:hidden;
+            img {width:200px;height:200px;object-fit:cover;}
+                .addtocart {position:absolute;left:0px;right:0px;bottom:-40px;transition:all 0.3s ease-out 0s;background:$themecolor;
+                    button {color:#fff;width:100%;}
+                }
+            }
+        h4 {font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        button.buynow {color:$themecolor;}
+        &:hover .addtocart {bottom:0;}
     }
 
-    .breadcrumb {text-transform:capitalize;
-        a {margin-right:10px;color:$themecolor;position:relative;font-size:11px;
-            &::after {content: '/';margin-left:10px;color:#999;}
-        }
-        span {color:#999;font-size:11px;}
-    }
+
+
 }
