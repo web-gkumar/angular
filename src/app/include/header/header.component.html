@@ -1,15 +1,40 @@
 <nav class="navbar p-0">
     <div class="container-fluid">
         <!-- <a routerLink="/" routerlinkacitve="active"><img src="assets/img/logo.png" width="130"></a> -->
-        <a routerLink="/" routerlinkacitve="active" class="text-white">Logo</a>
+        <a routerLink="/" routerlinkacitve="active"><img src="assets/img/logo.png" width="130"></a>
         <div>
             <button mat-icon-button><mat-icon>search</mat-icon></button>
-            <button mat-icon-button class="mx-2"><mat-icon>notifications</mat-icon></button>
+            <button mat-icon-button class="mx-2" [matMenuTriggerFor]="cartmenu"><mat-icon>add_shopping_cart</mat-icon>
+                <span class="position-absolute top-10 start-50 badge rounded-pill bg-danger">3</span>
+            </button>
+            <mat-menu #cartmenu="matMenu" xPosition="before" class="headdropdown">
+                <table class="table m-0">
+                    <thead class="table-primary">
+                        <tr>
+                            <th scope="col" width="300"><a class="text-dark" routerLink="/mycart">Check Card Page</a></th>
+                            <th scope="col" align="right" width="100">3 ITEM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Headset Perro</td>
+                            <td align="right"><button mat-icon-button color="primary"><mat-icon>close</mat-icon></button></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td align="right">200</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </mat-menu>
+
             <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
                 <mat-icon *ngIf="!authService.userData as user">account_circle</mat-icon>
                 <span *ngIf="authService.userData as user"><img [src]="user.photoURL" class="userprofile"></span>
             </button>
-            <mat-menu #beforeMenu="matMenu" xPosition="before" class="dropdownmenu">
+            <mat-menu #beforeMenu="matMenu" xPosition="before" class="headdropdown">
                 <button mat-menu-item routerLink="signin" *ngIf="!authService.userData as user"><mat-icon class="mr-2">manage_accounts</mat-icon>Login</button>
                 <div *ngIf="authService.userData as user">
                     <button mat-menu-item routerLink="/profile"><mat-icon class="mr-2">alternate_email</mat-icon>Profile</button>

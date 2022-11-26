@@ -6,6 +6,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule} from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -18,6 +19,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
+import {MatRippleModule} from '@angular/material/core';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -27,6 +30,7 @@ const materialKit = [
       MatButtonModule,
       MatIconModule,
       MatInputModule,
+      MatRadioModule,
       MatFormFieldModule,
       MatMenuModule,
       MatSnackBarModule,
@@ -38,7 +42,9 @@ const materialKit = [
       MatPaginatorModule,
       MatSelectModule,
       MatChipsModule,
-      MatListModule
+      MatListModule,
+      MatRippleModule,
+      MatSliderModule
 ]
 
 

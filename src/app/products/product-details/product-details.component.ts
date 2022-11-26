@@ -22,9 +22,15 @@ export class ProductDetailsComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.productsService.getProductDetails(id).subscribe(res => {
       this.data = res;
-      console.log(res);
     });
   }
 
+
+  addtocart() {
+    this.router.navigate(
+    ['/product'],
+    { queryParams: { page : 'popular' }}
+  );
+  }
 
 }

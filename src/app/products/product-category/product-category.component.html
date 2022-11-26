@@ -1,8 +1,58 @@
-<section class="productcategory">
-    <div class="container-fluid p-0">
-        <div class="row gx-0">
-            <div class="col-md-3" *ngFor="let data of category">
-                <div class="productcatitem bg-white text-center">{{data}}</div>
+<section class="innerhead py-5" style="background:url(assets/img/categorybg.jpg)">
+    <div class="container text-center">
+        <h1 class="text-uppercase">Category</h1>
+        <div class="breadcrumb m-0 justify-content-center">
+            <p class="m-0"><a routerLink="/">Home</a><span>Category</span></p>
+        </div>
+    </div>
+</section>
+
+
+<section class="categorypage featuredproduct py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <mat-card class="categorylist mb-4">
+                    <mat-card-title><h3>PRODUCT CATEGORIES</h3></mat-card-title>
+                    <mat-list>
+                        <mat-list-item matRipple *ngFor="let data of categorydata">
+                            <mat-icon mat-list-icon>folder</mat-icon>
+                            <div mat-line [routerLink]="['/category', data.name]">{{data.name}}</div>
+                        </mat-list-item>
+                      </mat-list>
+                  </mat-card>
+            </div>
+
+
+            <div class="col-md-9"  *ngIf="categorybyproduct">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="m-0">Showing Products {{categorydata.length}}</h4>
+                    <div class="">
+                        <button mat-icon-button class="mx-2"><mat-icon>grid_view</mat-icon></button>
+                        <button mat-icon-button><mat-icon>view_list</mat-icon></button>
+                    </div>
+                </div>
+                <div class="my-2"><mat-divider></mat-divider></div>
+                <div class="productlist">
+                    <div class="row mx-0">
+                        <div class="col-md-3 mb-4" *ngFor="let data of categorybyproduct">
+                            <mat-card class="p-0">
+                                <div class="w-100 p-3 bg-light productimg position-relative">
+                                    <img [src]="data.images" class="w-100">
+                                    <div class="addtocart"><button mat-button>Add To Cart</button></div>
+                                </div>
+                                <mat-card-content class="p-3 m-0 pb-0">
+                                    <small routerLink="/category">{{data.name}}</small>
+                                    <h4 class="m-0" [routerLink]="['/product', data.id]">{{data.category.name}}</h4>
+                                </mat-card-content>
+                                <mat-card-actions class="d-flex align-items-center justify-content-between p-3">
+                                    <button class="buynow" mat-button [routerLink]="['/product', data.id]">Buy &nbsp; {{data.price | currency: 'INR'}}</button>
+                                    <small class="mx-3"><del>{{data.price | currency: 'INR'}}</del></small>
+                                </mat-card-actions>
+                              </mat-card>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

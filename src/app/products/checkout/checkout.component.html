@@ -1,0 +1,120 @@
+<section class="p-5 productlist">
+    <mat-card>
+        <mat-card-title-group>
+            <mat-card-title><span class="h6">CHECKOUT</span></mat-card-title>
+            <button mat-flat-button color="primary" routerLink="/">Continue Shopping</button>
+        </mat-card-title-group>
+        <hr>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Billing Details</h1>
+                    <div class="row">
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>First Name (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>Last Name (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-12">
+                            <mat-label>Address</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-12">
+                            <mat-label>Town/city</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>State / Country (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>Postcode / zip (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>Email Address (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                        <mat-form-field appearance="standard" class="col-md-6">
+                            <mat-label>Phone (required)</mat-label>
+                            <input matInput required>
+                        </mat-form-field>
+                    </div>
+                    <h1 class="m-0">Additional information</h1>
+                    <p>Order notes (optional)</p>
+                    <mat-form-field appearance="standard" class="w-100">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput></textarea>
+                    </mat-form-field>
+
+                    <button mat-flat-button color="primary">Submit Review</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="myorder">
+                        <table class="table m-0">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th scope="col" width="60%">Product</th>
+                                    <th scope="col" width="40%">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Headset Perro × 2</td>
+                                    <td><h2 class="m-0">$176.00</h2></td>
+                                </tr>
+                                <tr>
+                                    <td>Headset Perro × 2</td>
+                                    <td><h2 class="m-0">$176.00</h2></td>
+                                </tr>
+                                <tr>
+                                    <td>Headset Perro × 2</td>
+                                    <td><h2 class="m-0">$176.00</h2></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Subtotal</strong></td>
+                                    <td><h2 class="m-0 text-danger">$376.00</h2></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Shipping</strong></td>
+                                    <td>
+                                        <div class="w-100">
+                                            <mat-radio-group>
+                                                <mat-radio-button value="auto">Create an Account?</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                        <div class="w-100">
+                                            <mat-radio-group>
+                                                <mat-radio-button value="auto">Flat Rate</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><h2 class="m-0 text-danger">$376.00</h2></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <div class="w-100 my-3">
+                                    <mat-radio-group>
+                                        <mat-radio-button value="auto">Direct Bank Transfer</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div class="w-100 mb-4">
+                                    <mat-radio-group>
+                                        <mat-radio-button value="auto">PayPal</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <button mat-flat-button color="primary">Place Order</button>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</section>
