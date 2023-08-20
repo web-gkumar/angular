@@ -30,19 +30,19 @@
                 </table>
             </mat-menu>
 
-            <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
+            <!-- <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
                 <mat-icon *ngIf="!authService.userData as user">account_circle</mat-icon>
                 <span *ngIf="authService.userData as user"><img [src]="user.photoURL" class="userprofile"></span>
-            </button>
+            </button> -->
             <mat-menu #beforeMenu="matMenu" xPosition="before" class="headdropdown">
-                <button mat-menu-item routerLink="signin" *ngIf="!authService.userData as user"><mat-icon class="mr-2">manage_accounts</mat-icon>Login</button>
-                <div *ngIf="authService.userData as user">
+                <button mat-menu-item routerLink="signin"><mat-icon class="mr-2">manage_accounts</mat-icon>Login</button>
+                <div>
                     <button mat-menu-item routerLink="/profile"><mat-icon class="mr-2">alternate_email</mat-icon>Profile</button>
-                    <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{(user.displayName) ? user.displayName : 'User'}}</button>
-                    <!-- <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{user.uid}}</button> -->
+                    <!-- <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{(user.displayName) ? user.displayName : 'User'}}</button>
+                    <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{user.uid}}</button>
                     <button mat-menu-item><mat-icon class="mr-2">alternate_email</mat-icon>{{user.email}}</button>
-                    <!-- <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{user.emailVerified}}</button> -->
-                    <button mat-menu-item (click)="authService.SignOut()"><mat-icon class="mr-2">power_settings_new</mat-icon>Log Out</button>
+                    <button mat-menu-item><mat-icon class="mr-2">manage_accounts</mat-icon>{{user.emailVerified}}</button>
+                    <button mat-menu-item><mat-icon class="mr-2">power_settings_new</mat-icon>Log Out</button> -->
                 </div>
             </mat-menu>
         </div>

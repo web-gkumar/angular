@@ -18,8 +18,8 @@ export class ProductsService {
     return this.http.get(this.apiUrl + 'categories');
   }
   
-  getSingleCategory(id:any) {
-    return this.http.get(this.apiUrl + 'categories/' + id + '/products');
+  getSingleCategory(name:any) {
+    return this.http.get(this.apiUrl + 'categories/' + name + '/products');
   }
 
   getAllProducts() {
@@ -27,7 +27,8 @@ export class ProductsService {
   }
 
   getProductDetails(id:any) {
-    return this.http.get(this.apiUrl + id)
+    let data = this.http.get(this.apiUrl + 'categories/' + id)
+    console.log(data)
   }
 
 

@@ -1,19 +1,9 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button (click)="drawer.toggle()"><mat-icon>sort</mat-icon></button>
-  <div class="w-100 mx-3"><app-header></app-header></div>
+<mat-toolbar color="primary" *ngIf="router.url != '/login'">
+    <button mat-icon-button><mat-icon>sort</mat-icon></button>
 </mat-toolbar>
 
-
-
-
-
-<mat-drawer-container class="pagecontainer" autosize>
-  <mat-drawer #drawer class="border-0"><app-sidenav></app-sidenav></mat-drawer>
-  <app-banner *ngIf="router.url == '/'"></app-banner>
-  <app-feature-category *ngIf="router.url == '/'"></app-feature-category>
-  <app-feature-product *ngIf="router.url == '/'">
-    <div class="pagetitle text-center mb-5" #first><h6>SPECIAL OFFER</h6><h2>TOP COLLECTION 2020</h2></div>
-  </app-feature-product>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-</mat-drawer-container>
+<section class="mainpage h-100vh">
+    <app-sidenav *ngIf="router.url != '/login'"></app-sidenav>
+    <router-outlet></router-outlet>
+</section>
++

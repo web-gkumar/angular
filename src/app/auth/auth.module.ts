@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+import { AuthGuard } from '../shared/guard/auth.guard'
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
@@ -17,7 +18,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     CommonModule,
     MaterialModule,
     RouterModule.forRoot([
-      { path: 'signin', component: SigninComponent },
+      { path: 'login', component: SigninComponent, canActivate: [AuthGuard] },
       { path: 'forgot-password', component: ForgotPasswordComponent },
     ])
   ]

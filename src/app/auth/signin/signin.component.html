@@ -1,28 +1,70 @@
 <section class="login" style="background: url(assets/img/login.jpg) center center;">
-    <div class="loginbox text-center">
-        <form>
-            <h2 class="text-uppercase">{{issignin ? 'Sign In' : 'Sign Up'}}</h2>
+  <div class="loginbox text-center">
+    <h2 class="text-uppercase">{{issignin ? 'Sign In' : 'Sign Up'}}</h2>
+    <div class="form">
+          <mat-form-field appearance="outline">
+            <mat-label>Email Id</mat-label>
+            <input matInput placeholder="Email" #userName required>
+          </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Email Id</mat-label>
-                <input matInput placeholder="Email" #userName required>
-            </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #userPassword required>
+          </mat-form-field>
 
-
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" #userPassword required>
-            </mat-form-field>
-
-
-
-            <button mat-raised-button color="primary" class="w-100" (click)="authService.SignIn(userName.value, userPassword.value)">{{issignin ? 'Login' : 'Sign Up'}}</button>
-
-            <button mat-raised-button class="w-100 my-3" (click)="authService.GoogleAuth()">Log in with Google</button>
-            <div class="text-end mt-3" *ngIf="issignin"><a class="text-muted" routerLink="/forgot-password">Forgotten Password?</a></div>
-        </form>
-        <span class="text-muted">{{issignin ? "Don't have an account?" : 'Already have an account?'}}
-            <a href="javascript:void(0)" class="text-dark" (click)="submitForm()">{{issignin ? 'Sign Up' : 'Login'}}</a>
-        </span>
+          <button mat-raised-button color="primary" class="w-100" (click)="authSubmit(userName.value, userPassword.value)">{{issignin ? 'Login' : 'Sign Up'}}</button>
+          <button mat-raised-button class="w-100 my-3" (click)="authService.GoogleAuth()">Log in with Google</button>
+          <div class="text-end mt-3" *ngIf="issignin"><a class="text-muted" routerLink="/forgot-password">Forgotten Password?</a></div>
     </div>
+    <span class="text-muted">{{issignin ? "Don't have an account?" : 'Already have an account?'}}
+      <a href="javascript:void(0)" class="text-dark" (click)="submitForm()">{{issignin ? 'Sign Up' : 'Login'}}</a>
+    </span>
+  </div>
 </section>
+
+
+
+
+
+<!--<section>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Login Image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+         <div class="formGroup">
+          <input type="text" class="formControl" placeholder="Username" #userName required>
+        </div>
+        <div class="formGroup">
+          <input type="password" class="formControl" placeholder="Password" #userPassword required>
+        </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <p class="small mt-2 pt-1 mb-0">Forget Password ?
+                <a  routerLink="/forgot-password"
+                    class="link-danger">send email </a></p>
+            </div>
+          <div class="text-center mt-4 pt-2">
+            <button
+              type="submit"
+              color="primary"
+              class="btn btn-primary btn-lg btn-block"
+              (click)="authService.Login(userName.value, userPassword.value)">
+                 Login
+            </button>
+          </div>
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <p class="small mt-2 pt-1 mb-0">Don't have an account?
+              <a
+              routerLink="/register-user"
+              class="link-danger">Register</a></p>
+          </div>
+          <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+            <p class="lead fw-normal mb-2 me-3">Sign in with</p>
+            <button class="btn btn-danger" type="button" (click)="authService.GoogleAuth()">Google</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</section> -->

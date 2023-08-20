@@ -1,10 +1,13 @@
-<section class="sidenav" style="background:url(assets/img/sidenav.jpg)">
-    <nav class="navbar custom-navbar">
-        <a class="navbar-brand text-white" href="/">STACKED</a>
-        <a class="text-white-50" href="/"><mat-icon>settings</mat-icon></a>
-    </nav>
-    <button mat-button routerLink="/" routerLinkActive="active"><mat-icon>home</mat-icon> Home </button>
-    <button mat-button *ngFor="let data of menulist">
-        <mat-icon>home</mat-icon> {{data}}
-    </button>
+<section class="sidebar">
+    <ul>
+      <li><a routerLink="/dashboard"><button mat-icon-button><i class="fa-solid fa-gauge"></i></button><span class="tooltips text-white">Dashboard</span></a></li>
+      <li><a routerLink="/forms-list"><button mat-icon-button><i class="fa-solid fa-circle-plus"></i></button><span class="tooltips text-white">Create Form</span></a></li>
+      <li><a href="#"><button mat-icon-button><i class="fa-solid fa-gauge"></i></button></a>
+          <div class="submenu bg-white">
+            <li><a href="#"><span class="material-symbols-outlined">book_online</span> Web Development </a></li>
+            <li><a href="#"><span class="material-symbols-outlined">book_online</span> Mobile App </a></li>
+            <li><a href="#"><span class="material-symbols-outlined">book_online</span> Business </a></li>
+          </div>
+      </li>
+    </ul>
 </section>

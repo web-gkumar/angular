@@ -1,8 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../interface/user';
-import * as auth from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/compat/firestore';
+import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, sendEmailVerification, User} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 
@@ -10,118 +7,120 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  userData: any;
-
-  constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
-    public router: Router,
-    public ngZone: NgZone
-  ) {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
+  UserData : any;
+  constructor(private auth: Auth,private router : Router, public ngZone: NgZone){
+    onAuthStateChanged(this.auth,(user: any)=>{
+      if(user){
+        this.UserData = user;
+        localStorage.setItem('user', JSON.stringify(this.UserData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
-    });
-  }
+    })
+   }
 
- SignIn(email: string, password: string) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
+  //get User
+    //get Authenticated user from firebase
+    getAuthFire(){
+      return this.auth.currentUser;
+    }
+
+
+    //get Authenticated user from Local Storage
+    getAuthLocal(){
+      const token = localStorage.getItem('user')
+      const user = JSON.parse(token as string);
+      return user;
+    }
+
+
+    //Check wither User Is looged in or not
+    get isLoggedIn(): boolean {
+      const token = localStorage.getItem('user')
+      const user = JSON.parse(token as string);
+      return user !== null ? true : false;
+    }
+
+
+    //Register Method
+    Register(email : string, password : string) {
+      return createUserWithEmailAndPassword(this.auth, email, password)
       .then((result) => {
+        this.UserData = result.user;
         this.ngZone.run(() => {
-          this.router.navigate(['']);
+           /* Call the SendVerificaitonMail() function when new user sign
+        up and returns promise */
+          this.sendEmailVerification()
+          this.router.navigate(['/dashboard']);
         });
-        this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
       });
-  }
+    }
 
-  SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
+
+    //Login Method
+    Login(email : string, password : string){
+      return signInWithEmailAndPassword(this.auth, email, password)
+      .then((result: any) => {
+        this.UserData = result.user;
+        this.ngZone.run(() => {
+          this.router.navigate(['/dashboard']);
+        });
       })
       .catch((error) => {
         window.alert(error.message);
       });
-  }
+    }
 
-  SendVerificationMail() {
-    return this.afAuth.currentUser
-      .then((u: any) => u.sendEmailVerification())
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
+ 
+   //Logout
+    Logout() {
+      signOut(this.auth).then(()=>this.router.navigate(['/sign-in']))
+
+
+    }
+
+
+  //login with Email or Facebook
+    //Login with Google
+    GoogleAuth() {
+      return this.loginWithPopup(new GoogleAuthProvider());
+    }
+
+
+
+    //Login with Facebook
+    //FacebookAuth() {
+    //  return this.loginWithPopup(new FacebookAuthProvider());
+    //}
+
+
+
+    //Pop Up Provider
+    loginWithPopup(provider :any) {
+      return signInWithPopup(this.auth,provider).then(() => {
+        this.router.navigate(['dashboard']);
       });
-  }
+    }
 
-  ForgotPassword(passwordResetEmail: string) {
-    return this.afAuth
-      .sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      })
-      .catch((error) => {
-        window.alert(error);
+
+    //Send Password Reset Email
+    async sendPasswordResetEmails(email : string){
+       sendPasswordResetEmail(this.auth,email)
+       .then(() => {
+          window.alert('Password reset email sent, check your inbox.');
+       })
+       .catch((error) => {
+        window.alert(error.message);
       });
-  }
+    }
 
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
-  }
-
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      if (res) {
-        this.router.navigate(['']);
-      }
-    });
-  }
-
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['']);
-        });
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
-
-  SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
-  }
-
-  SignOut() {
-    return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
-      this.router.navigate(['']);
-    });
-  }
+    //Send Email Verification
+    sendEmailVerification(){
+      return sendEmailVerification(this.auth.currentUser as User );
+    }
 }

@@ -2,63 +2,42 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// Services
-import { AuthService } from './shared/services/auth.service';
-
+import { AppRoutingModule } from './app-routing.module';
 // Import Firebase modules + environment
 import { environment } from '../environments/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 // Module
-import { ToastrModule } from 'ngx-toastr';
-import { SwiperModule } from 'swiper/angular';
 import { MaterialModule } from './material/material.module';
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { ProductsModule } from './products/products.module';
-
-
 
 // Component
-import { HeaderComponent } from './include/header/header.component';
-import { BannerComponent } from './include/banner/banner.component';
 import { SidenavComponent } from './include/sidenav/sidenav.component';
-import { FooterComponent } from './include/footer/footer.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    BannerComponent,
     SidenavComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
     MaterialModule,
     AuthModule,
+    DashboardModule,
     FormsModule,
     ReactiveFormsModule,
-    SwiperModule,
-    ToastrModule.forRoot(),
-    DashboardModule,
-    ProductsModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    AngularFirestoreModule,
-    AngularFireDatabaseModule,
-    BrowserAnimationsModule
+    provideFirestore(() => getFirestore()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

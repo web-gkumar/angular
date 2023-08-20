@@ -8,10 +8,24 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class SigninComponent implements OnInit {
   issignin = true;
+
+
   constructor(public authService: AuthService) {}
+
+
+
+
   ngOnInit(): void {
   }
   
+  authSubmit(email:any, password:any) {
+    if(this.issignin) {
+      this.authService.Login(email, password)
+    }else {
+      this.authService.Register(email, password)
+    }
+  }
+
 
   submitForm() {
     this.issignin = !this.issignin;
