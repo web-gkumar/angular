@@ -1,4 +1,4 @@
-.sidebar {position:fixed;left:0;width:70px;height:100%;background:#eee;transition:all 1s;padding:20px 0;
+.sidebar {position:absolute;left:0;width:70px;height:100%;background:#eee;transition:all 1s;padding:20px 0;z-index:9999;
     ul {
         li {
             a {color:#333;display:block;text-align:center;
@@ -19,7 +19,7 @@
             }
             &:hover {
                 .submenu {left:102%;}
-                a {background:#eee;}
+                a {background:rgba(66,133,244,.08);}
             }
         }
     }

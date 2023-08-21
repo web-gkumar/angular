@@ -21,6 +21,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
@@ -44,7 +45,8 @@ const materialKit = [
       MatChipsModule,
       MatListModule,
       MatRippleModule,
-      MatSliderModule
+      MatSliderModule,
+      MatAutocompleteModule
 ]
 
 

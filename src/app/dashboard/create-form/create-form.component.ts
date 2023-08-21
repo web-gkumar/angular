@@ -1,3 +1,5 @@
+import { CdkDrag, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/material/material.module';
 
@@ -11,9 +13,12 @@ import { MaterialModule } from 'src/app/material/material.module';
 })
 export class CreateFormComponent implements OnInit {
 
+  
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
