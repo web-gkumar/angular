@@ -22,6 +22,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -46,7 +47,8 @@ const materialKit = [
       MatListModule,
       MatRippleModule,
       MatSliderModule,
-      MatAutocompleteModule
+      MatAutocompleteModule,
+      DragDropModule
 ]
 
 
