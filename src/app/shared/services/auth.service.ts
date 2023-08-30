@@ -53,7 +53,7 @@ export class AuthService {
            /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
           this.sendEmailVerification()
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/admin']);
         });
       })
       .catch((error) => {
@@ -68,7 +68,7 @@ export class AuthService {
       .then((result: any) => {
         this.UserData = result.user;
         this.ngZone.run(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/admin']);
         });
       })
       .catch((error) => {
@@ -79,7 +79,7 @@ export class AuthService {
  
    //Logout
     Logout() {
-      signOut(this.auth).then(()=>this.router.navigate(['/sign-in']))
+      signOut(this.auth).then(()=>this.router.navigate(['/login']))
 
 
     }
@@ -103,7 +103,7 @@ export class AuthService {
     //Pop Up Provider
     loginWithPopup(provider :any) {
       return signInWithPopup(this.auth,provider).then(() => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['admin']);
       });
     }
 

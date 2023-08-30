@@ -1,8 +1,14 @@
-<mat-toolbar color="primary" *ngIf="router.url != '/login'">
-    <button mat-icon-button><mat-icon>sort</mat-icon></button>
-</mat-toolbar>
-
-<section class="mainpage h-100vh">
-    <app-sidenav *ngIf="router.url != '/login'"></app-sidenav>
+<!-- <div class="wrapper">
+  <h1 class="title">Angular Router</h1>
+  <nav>
+    <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
+    <a routerLink="/superheroes" routerLinkActive="active">Heroes</a>
+    <a routerLink="/admin" routerLinkActive="active">Admin</a>
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+  </nav>
+  <div [@routeAnimation]="getRouteAnimationData()">
     <router-outlet></router-outlet>
-</section>
+  </div>
+</div> -->
+
+<router-outlet></router-outlet>

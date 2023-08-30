@@ -1,0 +1,37 @@
+<mat-toolbar color="primary" class="justify-content-between">
+  <button mat-icon-button (click)="drawer.toggle()"><mat-icon>sort</mat-icon></button>
+  <button mat-icon-button [matMenuTriggerFor]="beforeMenu" *ngIf="authService.UserData as user"><img class="rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}" alt="{{user.displayName}}" width="25" height="25"></button>
+</mat-toolbar>
+
+<mat-drawer-container class="h-100vh" autosize>
+  <mat-drawer #drawer mode="side" opened>
+      <section class="sidebar">
+          <ul>
+              <li><a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><button mat-icon-button><i class="fa-solid fa-gauge"></i></button><span class="tooltips text-white">Dashboard</span></a></li>
+              <li><a routerLink="./form-list" routerLinkActive="active"><button mat-icon-button><i class="fa-solid fa-circle-plus"></i></button><span class="tooltips text-white">Forms</span></a></li>
+               <li><a href="#"><button mat-icon-button><i class="fa-solid fa-gauge"></i></button></a>
+                  <div class="submenu bg-white">
+                      <li><a href="#"><span class="material-symbols-outlined">book_online</span> Web Development </a></li>
+                      <li><a href="#"><span class="material-symbols-outlined">book_online</span> Mobile App </a></li>
+                      <li><a href="#"><span class="material-symbols-outlined">book_online</span> Business </a></li>
+                  </div>
+              </li>
+          </ul>
+      </section>
+  </mat-drawer>
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+
+
+
+
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+  <ng-container *ngIf="authService.UserData as user">
+      <button mat-menu-item>Name:  <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></button>
+      <button mat-menu-item>User ID: <strong>{{user.uid}}</strong></button>
+      <button mat-menu-item>Email: <strong>{{user.email}}</strong></button>
+      <button mat-menu-item>Email Verified: <strong>{{user.emailVerified}}</strong></button>
+  </ng-container>
+  <button mat-menu-item (click)="authService.Logout()">Logout</button>
+</mat-menu>
