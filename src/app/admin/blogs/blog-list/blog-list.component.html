@@ -1,0 +1,55 @@
+<section class="pagetitle">
+    <div class="d-flex justify-content-between">
+        <h3 class="m-0">Blogs</h3>
+        <button mat-flat-button color="primary" routerLink="../create-blog">Create Blogs</button>
+    </div>
+</section>
+
+<section class="bg-white p-3">
+  
+    <table mat-table [dataSource]="dataSource" class="w-100">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element | json}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="post_title">
+            <th mat-header-cell *matHeaderCellDef> Post Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.post_title}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="post_discription">
+            <th mat-header-cell *matHeaderCellDef> Post Discription </th>
+            <td mat-cell *matCellDef="let element"> {{element.post_discription}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="post_poster">
+            <th mat-header-cell *matHeaderCellDef> Post Image </th>
+            <td mat-cell *matCellDef="let element"> {{element.post_poster}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="meta_title">
+            <th mat-header-cell *matHeaderCellDef> Meta Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.meta_title}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="meta_discription">
+            <th mat-header-cell *matHeaderCellDef> Meta Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.meta_discription}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action </th>
+            <td mat-cell *matCellDef="let element; let i = index">
+                <button mat-icon-button color="accent"><mat-icon aria-label="Edit" [routerLink]="['../edit-blog', element.id]">edit</mat-icon></button>
+                <button mat-icon-button color="accent"><mat-icon aria-label="Delete">delete</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+       
+    </table>
+</section>

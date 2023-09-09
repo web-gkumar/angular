@@ -1,0 +1,27 @@
+<section class="sidebar bg-light mb-5">
+    <ul>
+        <ng-container *ngFor="let item of menu">
+            <ng-container *ngIf="item.subMenu === undefined">
+                <li *ngIf="item.title">
+                    <a [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <button mat-icon-button><mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon></button>
+                        <span class="tooltips text-white">{{ item.title }}</span>
+                    </a>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="item.subMenu?.length > 0">
+                <li><a href="#"><button mat-icon-button><mat-icon [style.color]="item.color">{{ item.icon}}</mat-icon></button></a>
+                    <div class="submenu bg-white">
+                        <li *ngFor="let data of item.subMenu">
+                            <a [routerLink]="data.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                                <button mat-icon-button><mat-icon [style.color]="data.color">{{ data.icon }}</mat-icon></button>
+                                {{ data.title }}
+                            </a>
+                        </li>
+                    </div>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+</section>
