@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import {  AuthGuard } from '../shared/guard/auth.guard';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const authRoutes: Routes = [
-  { path: '', component: SigninComponent, canActivate: [AuthGuard]},
+  { path: '', component: SigninComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent},
+  { path: 'verify-email', component: VerifyEmailComponent },
 ];
 
 @NgModule({

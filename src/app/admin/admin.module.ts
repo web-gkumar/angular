@@ -13,7 +13,6 @@ import { FormsListComponent } from './forms-list/forms-list.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { BlogListComponent } from './blogs/blog-list/blog-list.component';
 import { CreateBlogsComponent } from './blogs/create-blogs/create-blogs.component';
-import { EditBlogsComponent } from './blogs/edit-blogs/edit-blogs.component';
 
 
 
@@ -28,8 +27,7 @@ import { EditBlogsComponent } from './blogs/edit-blogs/edit-blogs.component';
     FormsListComponent,
     CreateFormComponent,
     BlogListComponent,
-    CreateBlogsComponent,
-    EditBlogsComponent
+    CreateBlogsComponent
   ],
   imports: [
     CommonModule,

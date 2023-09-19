@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
-
-
-
-
+import { ConformationDailogComponent } from '../../../models/conformation-dailog/conformation-dailog.component';
+import { CreateBlogsComponent } from '../create-blogs/create-blogs.component';
+import { MatDialog } from '@angular/material/dialog';
+import { map } from 'rxjs/operators';
+import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 
 
 @Component({
@@ -13,22 +14,54 @@ import { CrudService } from 'src/app/shared/services/blog-crud.service';
 })
 export class BlogListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','post_title', 'post_discription', 'post_poster', 'meta_title', 'meta_discription', 'action'];
-  dataSource: any;
+  dataSource: any = [];
+  columnNames: any = [];
 
 
-  constructor(
-    private crudService: CrudService,
-    ) { }
+  constructor(private crudService: CrudService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getblogpost();
+    this.crudService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(data => {
+      this.dataSource = data;
+      this.columnNames = Object.keys(data[0]);
+    });
   }
 
-  async getblogpost() {
-   // this.dataSource = await this.crudService.getBlogPost();
-  }
 
+
+
+  addForm() {
+    this.dialog.open(CreateBlogsComponent)
+  }
+  update(data: any) {
+    this.dialog.open(CreateBlogsComponent, {
+      data,
+    })
+    .afterClosed().subscribe(result => {
+      
+    });
+  }
+  deletePost(data: any, id: any) {
+    this.dialog.open(ConformationDailogComponent, {
+      data: {
+        title: 'Confirm Delete This Data ?',
+        message: data.blog_title
+      }
+    })
+      .afterClosed().subscribe((confirmado: Boolean) => {
+        if (confirmado) {
+          this.crudService.delete(id);
+        } else {
+
+        }
+      });
+  }
 
 
 }

@@ -14,7 +14,7 @@
 
           <button mat-raised-button color="primary" class="w-100" (click)="authSubmit(userName.value, userPassword.value)">{{issignin ? 'Login' : 'Sign Up'}}</button>
           <button mat-raised-button class="w-100 my-3" (click)="authService.GoogleAuth()">Log in with Google</button>
-          <div class="text-end mt-3" *ngIf="issignin"><a class="text-muted" routerLink="/forgot-password">Forgotten Password?</a></div>
+          <div class="text-end mt-3" *ngIf="issignin"><a class="text-muted" routerLink="forgot-password">Forgotten Password?</a></div>
     </div>
     <span class="text-muted">{{issignin ? "Don't have an account?" : 'Already have an account?'}}
       <a href="javascript:void(0)" class="text-dark" (click)="submitForm()">{{issignin ? 'Sign Up' : 'Login'}}</a>

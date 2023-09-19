@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Blogs } from '../interface/blog';
-import { Firestore,getFirestore,collection,addDoc,getDocs,query,deleteDoc,doc,updateDoc,DocumentData,CollectionReference, onSnapshot,QuerySnapshot } from '@angular/fire/firestore'
-
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { catchError, map, Observable, of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 
 @Injectable({
@@ -10,19 +11,43 @@ import { Firestore,getFirestore,collection,addDoc,getDocs,query,deleteDoc,doc,up
 
 
 export class CrudService {
-  constructor(public firestore: Firestore) { }
+  collectionName= 'Blogs';
 
-  async createBlogpost(postData:Blogs) {
-    const docRef = await addDoc(collection(this.firestore, 'Blogs'), {
-      mta_title: postData.mta_title,
-      mta_desc: postData.mta_desc,
-      blog_title: postData.blog_title,
-      blog_image: postData.blog_image,
-      blog_desc: postData.blog_desc,
-    });
+  constructor(
+    private db: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {
   }
-  async getBlogPost() {
-    return ( await getDocs(query(collection(this.firestore, 'BlogPost')))).docs.map((postData) => postData.data());
-   }
+
+  createBlogpost(postData: Blogs) {
+    return this.db.collection(this.collectionName).add({ ...postData });
+  }
+
+  getAll(): AngularFirestoreCollection<Blogs> {
+    return this.db.collection(this.collectionName);
+  }
+
+
+  updateBlogs(id: string, data: any) {
+    return this.db.collection(this.collectionName).doc(id).update(data);
+  }
+
+  delete(id: string) {
+    return this.db.collection(this.collectionName).doc(id).delete();
+  }
+
+  uploadFile(file: File, path: string) {
+    const filePath = `${path}/${file.name}`;
+    const ref = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    return task.snapshotChanges().pipe(
+      map(() => ref.getDownloadURL()),
+      catchError((error) => {
+        console.error('Error uploading file: ', error);
+        return of(null);
+      })
+    );
+  }
+
 
 }

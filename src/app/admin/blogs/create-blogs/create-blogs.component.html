@@ -1,52 +1,62 @@
-<section class="pagetitle">
-    <div class="d-flex justify-content-between">
-        <h3 class="m-0">Create Blog</h3>
-        <button mat-flat-button color="primary" routerLink="../blog">Blog List</button>
-    </div>
-</section>
-
-<section class="bg-white p-3">
-    <form [formGroup]="blogForms" (ngSubmit)="addPost()">
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="blogForms">
         <div class="row">
             <div class="col-md-6">
                 <mat-form-field>
-                    <mat-label>Meta Title</mat-label>
-                    <input matInput formControlName="mta_title" ngModel>
-                    <ng-container *ngIf="blogForms.controls['mta_title'].invalid && (blogForms.controls['mta_title'].dirty || blogForms.controls['mta_title'].touched)">
-                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('required')">Meta Title is required.</small>
-                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('minlength')">Meta Title must be 20 characters.</small>
-                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('maxLength')">Meta Title  less then 60 characters.</small>
-                    </ng-container>
-                </mat-form-field>
-            </div>
-            <div class="col-md-6">
-                <mat-form-field>
-                    <mat-label>Meta Description</mat-label>
-                    <input matInput formControlName="mta_desc" ngModel>
-                    <small class="text-danger" *ngIf="blogForms.controls['mta_desc'].touched && blogForms.controls['mta_desc'].errors">Meta Description Is Required</small>
-                </mat-form-field>
-            </div>
-            <div class="col-md-6">
-                <mat-form-field>
                     <mat-label>Blog Title</mat-label>
-                    <input matInput formControlName="blog_title" ngModel>
+                    <input matInput formControlName="blog_title">
                     <small class="text-danger" *ngIf="blogForms.controls['blog_title'].touched && blogForms.controls['blog_title'].errors">Blog Title Is Required</small>
                 </mat-form-field>
             </div>
+
             <div class="col-md-6">
-                <input type="file" formControlName="blog_image" ngModel>
+                <mat-form-field>
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category" multiple placeholder="Favorite food">
+                        <mat-option (onSelectionChange)="change($event)" [value]="data" *ngFor="let data of category">{{data}}</mat-option>
+                    </mat-select>
+                    <small class="text-danger" *ngIf="blogForms.controls['category'].touched && blogForms.controls['category'].errors">Blog Category Is Required</small>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <input type="file" (change)="onFileSelected($event)" formControlName="blog_image" />
+                <button (click)="onUpload()">Upload</button>
                 <small class="text-danger" *ngIf="blogForms.controls['blog_image'].touched && blogForms.controls['blog_image'].errors">Image Is Required</small>
             </div>
+
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Meta Title</mat-label>
+                    <input matInput formControlName="mta_title">
+                    <ng-container *ngIf="blogForms.controls['mta_title'].invalid && (blogForms.controls['mta_title'].dirty || blogForms.controls['mta_title'].touched)">
+                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('required')">Meta Title is required.</small>
+                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('minlength')">Meta Title must be 20 characters.</small>
+                        <small class="text-danger" *ngIf="blogForms.controls['mta_title'].hasError('maxLength')">Meta Title less then 60 characters.</small>
+                    </ng-container>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Meta Description</mat-label>
+                    <input matInput formControlName="mta_desc">
+                    <small class="text-danger" *ngIf="blogForms.controls['mta_desc'].touched && blogForms.controls['mta_desc'].errors">Meta Description Is Required</small>
+                </mat-form-field>
+            </div>
+
             <div class="col-md-12">
                 <mat-form-field>
                     <mat-label>Blog Description</mat-label>
-                    <textarea matInput formControlName="blog_desc" ngModel></textarea>
+                    <textarea matInput formControlName="blog_desc"></textarea>
                     <small class="text-danger" *ngIf="blogForms.controls['blog_desc'].touched && blogForms.controls['blog_desc'].errors">Blog Description Is Required</small>
                 </mat-form-field>
             </div>
         </div>
-        <button mat-button (click)="resetForm()">Cancel</button>
-        <button mat-button [disabled]="blogForms.invalid">Save</button>
     </form>
-
-</section>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false">Cancel</button>
+    <button mat-button [mat-dialog-close]="true" [disabled]="blogForms.invalid" (click)="addPost()">{{data ? 'Update': 'Save'}}</button>
+</mat-dialog-actions>

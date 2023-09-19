@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../shared/services/auth.service';
 
 
 @Component({
@@ -9,7 +8,7 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
