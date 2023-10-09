@@ -47,9 +47,10 @@ export class AuthService {
 
   Register(email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email,password).then(res => {
-      this.SendVerificationMail();
+     // this.SendVerificationMail();
       this.router.navigate(['/auth']);
       localStorage.setItem('user', JSON.stringify(res.user));
+      alert("Registation Successfull")
     }).catch(error => {
        window.alert(error.message);
     })
@@ -58,6 +59,7 @@ export class AuthService {
   Login(email: string, password: string) {
    return this.auth.signInWithEmailAndPassword(email,password).then(res => {      
       this.router.navigate(['/admin']);
+      alert("Successfull Login")
     }).catch( error =>{
       window.alert(error.message)
     })
@@ -75,7 +77,11 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider()).then((res: any) => {
       this.router.navigate(['admin']);
-    });
+    }).then( res => {
+      alert("Google Login Successfull")
+    }).catch(error => {
+      alert(error.message)
+    })
   }
   AuthLogin(provider: any) {
     return this.auth.signInWithPopup(provider).then((result) => {
@@ -100,7 +106,11 @@ export class AuthService {
 
   //Login with Facebook
   FacebookAuth() {
-    return this.AuthLogin(new FacebookAuthProvider());
+    return this.AuthLogin(new FacebookAuthProvider()).then( res => {
+      alert("Facebook Login Successfull")
+    }).catch(error => {
+      alert(error.message)
+    })
   }
 
   SendVerificationMail() {

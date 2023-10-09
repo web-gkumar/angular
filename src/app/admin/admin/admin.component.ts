@@ -29,13 +29,13 @@ export class AdminComponent implements OnInit {
     {
       title: 'Forms',
       icon: 'design_services',
-      link: './form-list',
+      link: 'forms',
       color: '#000000',
     },
     {
       title: 'Blogs',
       icon: 'rss_feed',
-      link: './blog',
+      link: 'blogs',
       color: '#000000',
     },
     {
@@ -46,14 +46,14 @@ export class AdminComponent implements OnInit {
         {
           title: 'Forms',
           icon: 'money',
-          link: './form-list',
+          link: 'forms',
           color: '#000000',
         },
         {
           title: 'Blogs',
           icon: 'people',
           color: '#000000',
-          link: './blog',
+          link: 'blogs',
         },
       ],
     },

@@ -1,0 +1,18 @@
+<section class="pagetitle">
+    <div class="d-flex justify-content-between">
+        <h3 class="m-0">Create Forms</h3>
+        <button mat-flat-button color="primary" routerLink="../../forms">Form List</button>
+    </div>
+</section>
+
+<section class="bg-light" cdkDropListGroup>
+        <mat-card class="p-2" cdkDropList [cdkDropListData]="iconFields">
+            <button mat-button *ngFor="let item of iconFields; let i = index" cdkDrag>
+                <mat-icon style="font-size:16px;width:auto;height:auto;" class="me-1">{{ item.dndIcon }}</mat-icon>
+                <small>{{item.type | titlecase}}</small>
+            </button>
+        </mat-card>
+        <div class="px-3 py-4" cdkDropList [cdkDropListData]="formList" (cdkDropListDropped)="drop($event)">
+            <app-form-fields [formData]="formList"></app-form-fields>
+        </div>
+</section>

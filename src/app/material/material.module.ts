@@ -24,6 +24,15 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
+
+
+
+
 
 
 const materialKit = [
@@ -50,6 +59,11 @@ const materialKit = [
       MatSliderModule,
       MatAutocompleteModule,
       DragDropModule,
+      MatTooltipModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatCheckboxModule,
+      MatDividerModule
 ]
 
 

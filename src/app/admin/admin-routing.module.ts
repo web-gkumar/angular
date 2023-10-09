@@ -2,17 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { FormsListComponent } from './forms-list/forms-list.component';
-import { CreateFormComponent } from './create-form/create-form.component';
-import { BlogListComponent } from './blogs/blog-list/blog-list.component';
+
 
 const adminRoutes: Routes = [
   { path: '', component: AdminComponent, children: [
       { path: '',
         children: [
-          { path: 'form-list', component: FormsListComponent },
-          { path: 'create-forms', component: CreateFormComponent },
-          { path: 'blog', component: BlogListComponent },
+          { path: 'forms', loadChildren: () => import('./builder/builder.module').then(m => m.BuilderModule)},
+          { path: 'blogs', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule)},
           { path: '', component: DashboardComponent }
         ]
       }

@@ -5,6 +5,7 @@ import { CreateBlogsComponent } from '../create-blogs/create-blogs.component';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
+import { SelectionModel } from '@angular/cdk/collections';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class BlogListComponent implements OnInit {
 
   dataSource: any = [];
   columnNames: any = [];
+  selection = new SelectionModel<any>(true, []);
+
 
 
   constructor(private crudService: CrudService,public dialog: MatDialog) { }
@@ -30,10 +33,18 @@ export class BlogListComponent implements OnInit {
     ).subscribe(data => {
       this.dataSource = data;
       this.columnNames = Object.keys(data[0]);
+    //  this.columnNames.push('Action');
     });
   }
 
+  capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
 
+
+  deleteRowData(data:any) {
+
+  }
 
 
   addForm() {

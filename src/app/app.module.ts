@@ -10,7 +10,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -25,9 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AngularFireStorageModule,
     AppRoutingModule,
   ],
-  providers: [
-    MatSnackBarModule,
-  ],
+  providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

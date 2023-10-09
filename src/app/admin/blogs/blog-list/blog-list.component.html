@@ -16,11 +16,31 @@
         <tbody>
             <tr *ngFor='let item of dataSource; let i = index;'>
                 <td *ngFor='let key of columnNames'>{{item[key]}}</td>
-                <td>
+                <td class="d-flex">
                     <button mat-icon-button color="accent" (click)="update(item)"><mat-icon aria-label="Edit">edit</mat-icon></button>
                     <button mat-icon-button color="accent" (click)="deletePost(item, item.id)"><mat-icon aria-label="Delete">delete</mat-icon></button>
                 </td>
             </tr>
         </tbody>
     </table>
+
+
+    <!-- <table mat-table [dataSource]="dataSource">
+      <ng-container *ngFor="let columnName of columnNames" [matColumnDef]="columnName">
+        <th mat-header-cell *matHeaderCellDef>{{ capitalize(columnName) }}</th>
+        <td mat-cell *matCellDef="let row">{{ row[columnName] }}</td>
+        <td mat-cell *matCellDef="let row">
+            <span *ngIf="columnName !== 'action'">{{row[columnName]}}</span>
+             <span *ngIf="columnName == 'action'">
+               <button (click)="deleteRowData(row)" color="primary">delete</button>
+             </span>
+         </td> 
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnNames"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnNames"></tr>
+    </table> -->
+      
+
+
+
 </section>
