@@ -5,7 +5,7 @@
     </div>
 </section>
 
-<section class="bg-white p-3">
+<section class="p-3">
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +17,7 @@
             <tr *ngFor='let item of dataSource; let i = index;'>
                 <td *ngFor='let key of columnNames'>{{item[key]}}</td>
                 <td class="d-flex">
-                    <button mat-icon-button color="accent" (click)="update(item)"><mat-icon aria-label="Edit">edit</mat-icon></button>
+                    <button mat-icon-button (click)="update(item)"><mat-icon aria-label="Edit">edit</mat-icon></button>
                     <button mat-icon-button color="accent" (click)="deletePost(item, item.id)"><mat-icon aria-label="Delete">delete</mat-icon></button>
                 </td>
             </tr>

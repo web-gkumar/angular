@@ -1,8 +1,8 @@
 .sidebar {width:70px;background:#eee;
     ul {
         li {
-            a {color:#333;display:block;text-align:center;
-                &:hover {background:#eee;
+            a {color:#333;display:block;text-align:center;padding:10px;border-left:4px solid transparent;
+                &:hover {background:#eee;border-color:rgb(165, 165, 255);
                     .tooltips {transform:scale(1);}
                 }
             }
@@ -11,17 +11,17 @@
             }
             .submenu {position:absolute;left:100%;top:0;height:100%;box-shadow:0 3.75pt 15px rgb(0 0 0 / 8%);min-width:250px;left:-400%;transition:all .34s ease-in;z-index:-5;
                 li {
-                    a {text-align:left;padding:1pc .875pc;border-bottom:1px solid #f7f7fc;color:#83839c;transition:all .3s ease-out;background:#fff;
-                        &:hover {background:rgba(66,133,244,.04);padding-left:2.125pc;color:#007791;
+                    a {text-align:left;color:#83839c;transition:all .3s ease-out;background:#fff;border-left:4px solid transparent;
+                        &:hover {background:rgba(66,133,244,.04);padding-left:30px;color:#007791;border-color:rgb(165, 165, 255);
                         }
                     }
                 }
             }
             &:hover {
                 .submenu {left:102%;}
-                a {background:rgba(66,133,244,.08);}
+                a {background:rgba(66,133,244,.08);border-color:rgb(165, 165, 255);}
             }
-            .active {background:rgba(66,133,244,.08);}
+            .active {background:rgba(66,133,244,.08);border-left:4px solid rgb(165, 165, 255);}
         }
   
     }

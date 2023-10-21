@@ -5,7 +5,7 @@
     </div>
 </section>
 
-<section class="bg-light" cdkDropListGroup>
+<section cdkDropListGroup>
         <mat-card class="p-2" cdkDropList [cdkDropListData]="iconFields">
             <button mat-button *ngFor="let item of iconFields; let i = index" cdkDrag>
                 <mat-icon style="font-size:16px;width:auto;height:auto;" class="me-1">{{ item.dndIcon }}</mat-icon>
