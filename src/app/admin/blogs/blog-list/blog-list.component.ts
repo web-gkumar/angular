@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
+import { FileUploadService } from 'src/app/shared/services/file-upload.service';
 import { ConformationDailogComponent } from '../../../models/conformation-dailog/conformation-dailog.component';
 import { CreateBlogsComponent } from '../create-blogs/create-blogs.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,7 +22,11 @@ export class BlogListComponent implements OnInit {
 
 
 
-  constructor(private crudService: CrudService,public dialog: MatDialog) { }
+  constructor(
+    private crudService: CrudService,
+    private FileUploadService: FileUploadService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.crudService.getAll().snapshotChanges().pipe(
@@ -31,9 +36,11 @@ export class BlogListComponent implements OnInit {
         )
       )
     ).subscribe(data => {
-      this.dataSource = data;
-      this.columnNames = Object.keys(data[0]);
-    //  this.columnNames.push('Action');
+      if(data && data.length > 0) {
+        this.dataSource = data;
+        this.columnNames = Object.keys(data[0]);
+      //  this.columnNames.push('Action');
+      }
     });
   }
 

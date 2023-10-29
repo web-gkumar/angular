@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>File Upload</h2>
+<mat-dialog-content class="mat-typography">
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" multiple />
+    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose File</button>
+
+
+
+    {{csvInput.value}}
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+</mat-dialog-actions>

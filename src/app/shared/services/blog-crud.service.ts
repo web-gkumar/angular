@@ -16,8 +16,7 @@ export class CrudService {
   constructor(
     private db: AngularFirestore,
     private storage: AngularFireStorage
-  ) {
-  }
+  ) {}
 
   createBlogpost(postData: Blogs) {
     return this.db.collection(this.collectionName).add({ ...postData });
@@ -27,7 +26,6 @@ export class CrudService {
     return this.db.collection(this.collectionName);
   }
 
-
   updateBlogs(id: string, data: any) {
     return this.db.collection(this.collectionName).doc(id).update(data);
   }
@@ -35,19 +33,5 @@ export class CrudService {
   delete(id: string) {
     return this.db.collection(this.collectionName).doc(id).delete();
   }
-
-  uploadFile(file: File, path: string) {
-    const filePath = `${path}/${file.name}`;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    return task.snapshotChanges().pipe(
-      map(() => ref.getDownloadURL()),
-      catchError((error) => {
-        console.error('Error uploading file: ', error);
-        return of(null);
-      })
-    );
-  }
-
 
 }

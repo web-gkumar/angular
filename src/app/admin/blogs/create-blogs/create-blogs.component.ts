@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
+import { FileUploadService } from 'src/app/shared/services/file-upload.service';
+import { FileUploadComponent } from 'src/app/models/file-upload/file-upload.component';
 
 
 @Component({
@@ -22,6 +24,8 @@ export class CreateBlogsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private crudService: CrudService,
     public dialogRef: MatDialogRef<CreateBlogsComponent>,
+    private fileUploadService:FileUploadService,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
       this.blogForms = this.formBuilder.group({
@@ -35,14 +39,12 @@ export class CreateBlogsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.blogForms.patchValue(this.data)
+    this.blogForms.setValue(this.data)
   }
 
 
   addPost() {
-    let formdata = [
-      
-    ]
+    let formdata = []
     if(this.data && this.data != null ) {
       this.crudService.updateBlogs(this.data.id, this.blogForms.value);
     }else {
@@ -53,24 +55,30 @@ export class CreateBlogsComponent implements OnInit {
   change(event:any)
   {
     if(event.value) {
-      console.log(event.source.value, event.source.selected);
+     // console.log(event.source.value, event.source.selected);
     }
   }
 
+  fileupload() {
+    this.dialog.open(FileUploadComponent, {
+      width: '1000px',
+      data: {
+        title: 'Blog Image Post',
+        
+      }
+    })
+    .afterClosed().subscribe(result => {
+      
+    });
 
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
   }
 
-  
-  onUpload() {
-    if (this.selectedFile) {
-      this.crudService.uploadFile(this.selectedFile, 'gs://blogs-76980.appspot.com').subscribe((downloadUrl) => {
-        if (downloadUrl) {
-          console.log('File uploaded. Download URL:', downloadUrl);
-        } else {
-          console.error('File upload failed.');
-        }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    const path = `application/${file.name}`;
+    if(file) {
+      this.fileUploadService.uploadFile(file, path).subscribe(res => {
+        console.log(res)
       });
     }
   }

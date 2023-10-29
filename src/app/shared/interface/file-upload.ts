@@ -1,8 +1,10 @@
 export class FileUpload {
-  key(key: any) {
-    throw new Error('Method not implemented.');
+  key!: string;
+  name!: string;
+  url!: string;
+  file: File;
+
+  constructor(file: File) {
+    this.file = file;
   }
-  file: any;
-  url: any;
-  name: any;
 }
