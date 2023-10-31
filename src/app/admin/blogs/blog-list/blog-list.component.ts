@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -19,14 +20,16 @@ export class BlogListComponent implements OnInit {
   dataSource: any = [];
   columnNames: any = [];
   selection = new SelectionModel<any>(true, []);
+  imageUrl$: Observable<string>;
 
 
 
   constructor(
     private crudService: CrudService,
     private FileUploadService: FileUploadService,
+    private storage: AngularFireStorage,
     public dialog: MatDialog
-    ) { }
+    ) { this.imageUrl$ = storage.ref("application/aal-bio-blogimage (1).jpg").getDownloadURL();}
 
   ngOnInit(): void {
     this.crudService.getAll().snapshotChanges().pipe(
@@ -80,6 +83,7 @@ export class BlogListComponent implements OnInit {
         }
       });
   }
+  
 
 
 }

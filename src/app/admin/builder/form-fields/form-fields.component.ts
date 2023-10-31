@@ -64,8 +64,6 @@ export class FormFieldsComponent implements OnInit {
       .afterClosed().subscribe((confirmado: Boolean) => {
         if (confirmado) {
           this.formBuilderService.deleteForms(id);
-        } else {
-          
         }
       });
   }

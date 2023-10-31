@@ -29,6 +29,7 @@ export class CreateBlogsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
       this.blogForms = this.formBuilder.group({
+        id: [],
         blog_title: ['', Validators.required],
         category: ['', Validators.required],
         blog_image: [''],
@@ -44,7 +45,6 @@ export class CreateBlogsComponent implements OnInit {
 
 
   addPost() {
-    let formdata = []
     if(this.data && this.data != null ) {
       this.crudService.updateBlogs(this.data.id, this.blogForms.value);
     }else {
@@ -76,10 +76,8 @@ export class CreateBlogsComponent implements OnInit {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     const path = `application/${file.name}`;
-    if(file) {
-      this.fileUploadService.uploadFile(file, path).subscribe(res => {
-        console.log(res)
-      });
+    if(file && file.length > 0) {
+      this.fileUploadService.uploadFile(file, path);
     }
   }
  

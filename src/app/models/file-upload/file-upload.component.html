@@ -1,11 +1,6 @@
 <h2 mat-dialog-title>File Upload</h2>
 <mat-dialog-content class="mat-typography">
-    <input #csvInput hidden="true" type="file" onclick="this.value=null" multiple />
-    <button mat-flat-button color="primary" (click)="csvInput.click()">Choose File</button>
-
-
-
-    {{csvInput.value}}
+    <input type="file" multiple (click)="uploadingdata($event)">
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
