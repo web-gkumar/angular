@@ -89,6 +89,12 @@
                     </div>
                 </ng-container>
             </form>
+
+
+            <li *ngIf="formDetailsList">
+                You Data: <em [innerHTML]="formDetailsList | json"></em>
+              </li>
+
         </mat-card-content>
 
         <mat-card-actions class="bg-light px-3 py-1 m-0">

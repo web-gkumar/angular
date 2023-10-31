@@ -16,6 +16,7 @@ export class FormFieldsComponent implements OnInit {
   formSettingData:any;
   formlist!:FormGroup;
   formList:any = [];
+  formDetailsList:any;
 
   constructor(
     public dialog: MatDialog,
@@ -35,14 +36,12 @@ export class FormFieldsComponent implements OnInit {
     })
   }
 
-
   openDialog(data:any,index:any): void {
     const dialogRef = this.dialog.open(FormFieldsDetailsComponent, {
-      data
+      data,
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      this.formSettingData = result;
+       this.formDetailsList = JSON.parse(JSON.stringify(result));
     });
   }
 
@@ -54,6 +53,16 @@ export class FormFieldsComponent implements OnInit {
   resetForm() {
     this.formlist.reset();
   }
+
+
+
+
+
+
+
+
+
+
   deleteFields(data:any,id:any) {
     this.dialog.open(ConformationDailogComponent, {
       data: {
