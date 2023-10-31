@@ -36,9 +36,15 @@ export class FormFieldsComponent implements OnInit {
     })
   }
 
+
+  label:any = "label";
+  filedName:any = "Testing";
+  width:any = "20px";
+  type:any = "text";
+  className:any = "col-lg-3"
   openDialog(data:any,index:any): void {
     const dialogRef = this.dialog.open(FormFieldsDetailsComponent, {
-      data,
+      data: {label: this.label, filedName: this.filedName, width: this.width, type: this.type, class: this.className},
     });
     dialogRef.afterClosed().subscribe(result => {
        this.formDetailsList = JSON.parse(JSON.stringify(result));
