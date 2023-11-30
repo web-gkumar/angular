@@ -4,3 +4,24 @@
         <button mat-flat-button color="primary" routerLink="create-forms">Create Forms</button>
     </div>
 </section>
+
+
+<section class="p-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th *ngFor="let data of columnNames">{{ data }}</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of dataSource; let i = index;'>
+                <td *ngFor='let key of columnNames'>{{item[key]}}</td>
+                <td class="d-flex">
+                    <button mat-icon-button><mat-icon aria-label="Edit">edit</mat-icon></button>
+                    <button mat-icon-button color="accent"><mat-icon aria-label="Delete">delete</mat-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

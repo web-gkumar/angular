@@ -7,11 +7,11 @@
 
 
         <mat-card-content class="px-5 my-4">
-            <form class="row" [formGroup]="formlist">
-                <ng-container *ngFor="let item of formData; let i = index">
+            <form class="row" [formGroup]="templateForm">
+                <ng-container *ngFor="let item of formType; let i = index">
                     <div class="formtypename" *ngIf="item.type == 'text'" cdkDrag>
                         <mat-form-field>
-                            <mat-label>Text</mat-label>
+                            <mat-label>{{item.type | titlecase}}</mat-label>
                             <input matInput formControlName="text">
                         </mat-form-field>
                         <button class="fieldsbtn" mat-icon-button
@@ -21,7 +21,7 @@
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'number'" cdkDrag>
                         <mat-form-field>
-                            <mat-label>Number</mat-label>
+                            <mat-label>{{item.type | titlecase}}</mat-label>
                             <input matInput type="number" formControlName="number">
                         </mat-form-field>
                         <button class="fieldsbtn" mat-icon-button
@@ -30,7 +30,7 @@
                             (click)="openDialog(item,i)"><mat-icon>open_in_new</mat-icon></button>
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'label'" cdkDrag>
-                        <div class="w-100 p-2 form-label bg-light">Label</div>
+                        <div class="w-100 p-2 form-label bg-light">{{item.type | titlecase}}</div>
                         <button class="fieldsbtn" mat-icon-button
                             (click)="deleteFields(item,i)"><mat-icon>delete</mat-icon></button>
                         <button class="fieldsbtn" mat-icon-button
@@ -38,7 +38,7 @@
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'dropdown'" cdkDrag>
                         <mat-form-field>
-                            <mat-label>Select</mat-label>
+                            <mat-label>{{item.type | titlecase}}</mat-label>
                             <mat-select formControlName="selectoption">
                                 <mat-option value="one">First option</mat-option>
                                 <mat-option value="two">Second option</mat-option>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'date'" cdkDrag>
                         <mat-form-field>
-                            <mat-label>Choose a date</mat-label>
+                            <mat-label>{{item.type | titlecase}}</mat-label>
                             <input matInput [matDatepicker]="picker2" formControlName="datepicker">
                             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                             <mat-datepicker #picker2 color="primary"></mat-datepicker>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'textarea'" cdkDrag>
                         <mat-form-field>
-                            <mat-label>Textarea</mat-label>
+                            <mat-label>{{item.type | titlecase}}</mat-label>
                             <textarea matInput formControlName="textarea"></textarea>
                         </mat-form-field>
                         <button class="fieldsbtn" mat-icon-button
@@ -81,7 +81,7 @@
                             (click)="openDialog(item,i)"><mat-icon>open_in_new</mat-icon></button>
                     </div>
                     <div class="formtypename" *ngIf="item.type == 'checkbox'" cdkDrag>
-                        <mat-checkbox formControlName="checkbox">Check me!</mat-checkbox>
+                        <mat-checkbox formControlName="checkbox">{{item.type | titlecase}}</mat-checkbox>
                         <button class="fieldsbtn" mat-icon-button
                             (click)="deleteFields(item,i)"><mat-icon>delete</mat-icon></button>
                         <button class="fieldsbtn" mat-icon-button
@@ -97,8 +97,8 @@
 
         </mat-card-content>
 
-        <mat-card-actions class="bg-light px-3 py-1 m-0">
-            <button mat-button (click)="resetForm()">Reset</button>
+        <mat-card-actions class="bg-light px-3 py-1 m-0 text-center">
+            <button mat-button class="mx-2" (click)="resetForm()">Reset</button>
             <button mat-button color="primary" (click)="saveFrom()">Save</button>
         </mat-card-actions>
     </mat-card>

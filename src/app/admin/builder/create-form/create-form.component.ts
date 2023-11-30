@@ -30,7 +30,7 @@ export class CreateFormComponent implements OnInit {
   ];
 
   formList:any = [
-    { dndIcon: 'text_fields', type: 'text'},
+    { dndIcon: '', type: ''},
   ];
 
   drop(event: CdkDragDrop<any[]>) {

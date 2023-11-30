@@ -12,9 +12,9 @@ import { ConformationDailogComponent } from '../../../models/conformation-dailog
 })
 export class FormFieldsComponent implements OnInit {
 
-  @Input() formData:any;
+  @Input() formType:any;
   formSettingData:any;
-  formlist!:FormGroup;
+  templateForm!:FormGroup;
   formList:any = [];
   formDetailsList:any;
 
@@ -25,7 +25,7 @@ export class FormFieldsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.formlist = this.formBuilder.group({
+    this.templateForm = this.formBuilder.group({
       text: ['', Validators.required],
       number: ['', Validators.required],
       selectoption: ['', Validators.required],
@@ -36,15 +36,9 @@ export class FormFieldsComponent implements OnInit {
     })
   }
 
-
-  label:any = "label";
-  filedName:any = "Testing";
-  width:any = "20px";
-  type:any = "text";
-  className:any = "col-lg-3"
   openDialog(data:any,index:any): void {
     const dialogRef = this.dialog.open(FormFieldsDetailsComponent, {
-      data: {label: this.label, filedName: this.filedName, width: this.width, type: this.type, class: this.className},
+      data,
     });
     dialogRef.afterClosed().subscribe(result => {
        this.formDetailsList = JSON.parse(JSON.stringify(result));
@@ -52,12 +46,12 @@ export class FormFieldsComponent implements OnInit {
   }
 
   saveFrom() {
-    this.formBuilderService.createForms(this.formlist.value)
+    this.formBuilderService.createForms(this.templateForm.value)
     this.resetForm();
   }
 
   resetForm() {
-    this.formlist.reset();
+    this.templateForm.getRawValue().setvalue('');
   }
 
 

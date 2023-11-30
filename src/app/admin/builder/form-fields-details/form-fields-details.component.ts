@@ -1,5 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilderService } from '../../../shared/services/form-builder.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -13,6 +14,7 @@ export class FormFieldsDetailsComponent implements OnInit {
   formData:any;
   constructor(
     private formBuilder: FormBuilder,
+    private formBuilderService: FormBuilderService,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
     this.formSetting = this.formBuilder.group({
@@ -28,10 +30,10 @@ export class FormFieldsDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formData = {
-      formData: this.formSetting.value
-    }
   }
   
+  formDetailsSave() {
+    this.formData = this.formSetting.value
+  }
 
 }

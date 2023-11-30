@@ -22,6 +22,7 @@ export class FormBuilderService {
   getAllForms(): AngularFirestoreCollection<any> {
     return this.db.collection(this.collectionName);
   }
+  
 
 
   updateForms(id: string, data: any) {

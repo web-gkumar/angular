@@ -13,6 +13,6 @@
             </button>
         </mat-card>
         <div class="px-3 py-4" cdkDropList [cdkDropListData]="formList" (cdkDropListDropped)="drop($event)">
-            <app-form-fields [formData]="formList"></app-form-fields>
+            <app-form-fields [formType]="formList"></app-form-fields>
         </div>
 </section>

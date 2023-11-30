@@ -2,28 +2,14 @@
     <mat-tab-group>
         <mat-tab [label]="data.type + ' Fields' | uppercase">
             <form class="row mx-0 my-5" [formGroup]="formSetting">
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Label</mat-label><input matInput formControlName="label" [(ngModel)]="data.label"></mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Field</mat-label><input matInput formControlName="filedName" [(ngModel)]="data.filedName"></mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Width</mat-label><input matInput formControlName="width" [(ngModel)]="data.width"></mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Class</mat-label><input matInput formControlName="class" [(ngModel)]="data.class"></mat-form-field>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Max Length</mat-label><input matInput formControlName="maxLength" [(ngModel)]="data.maxLength"></mat-form-field></div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Min Length</mat-label><input matInput formControlName="minLength" [(ngModel)]="data.minLength"></mat-form-field></div>
-                <div class="col-md-4">
-                    <mat-checkbox formControlName="required" [(ngModel)]="data.required">Is Required ?</mat-checkbox>
-                </div>
-                <div class="col-md-4">
-                    <mat-form-field><mat-label>Add Required Message</mat-label><input matInput formControlName="errormsg" [(ngModel)]="data.errormsg"></mat-form-field>
-                </div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Label</mat-label><input matInput formControlName="label"></mat-form-field></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Field</mat-label><input matInput formControlName="filedName"></mat-form-field></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Width</mat-label><input matInput formControlName="width"></mat-form-field></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Class</mat-label><input matInput formControlName="class"></mat-form-field></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Max Length</mat-label><input matInput formControlName="maxLength"></mat-form-field></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Min Length</mat-label><input matInput formControlName="minLength"></mat-form-field></div>
+                <div class="col-md-4"><mat-checkbox formControlName="required">Is Required ?</mat-checkbox></div>
+                <div class="col-md-4"><mat-form-field><mat-label>Add Required Message</mat-label><input matInput formControlName="errormsg"></mat-form-field></div>
             </form>
         </mat-tab>
     </mat-tab-group>

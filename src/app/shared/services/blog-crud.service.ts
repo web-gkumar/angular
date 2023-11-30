@@ -22,7 +22,7 @@ export class CrudService {
     return this.db.collection(this.collectionName).add({ ...postData });
   }
 
-  getAll(): AngularFirestoreCollection<Blogs> {
+  getAll(): AngularFirestoreCollection<any> {
     return this.db.collection(this.collectionName);
   }
 
