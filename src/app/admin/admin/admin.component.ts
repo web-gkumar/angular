@@ -26,37 +26,37 @@ export class AdminComponent implements OnInit {
       link: '',
       color: '#000000',
     },
-    // {
-    //   title: 'Forms',
-    //   icon: 'design_services',
-    //   link: 'forms',
-    //   color: '#000000',
-    // },
+    {
+      title: 'Forms',
+      icon: 'design_services',
+      link: 'forms',
+      color: '#000000',
+    },
     {
       title: 'Blogs',
       icon: 'rss_feed',
       link: 'blogs',
       color: '#000000',
     },
-    // {
-    //   title: 'Statistics',
-    //   icon: 'bar_chart',
-    //   color: '#000000',
-    //   subMenu: [
-    //     {
-    //       title: 'Forms',
-    //       icon: 'money',
-    //       link: 'forms',
-    //       color: '#000000',
-    //     },
-    //     {
-    //       title: 'Blogs',
-    //       icon: 'people',
-    //       color: '#000000',
-    //       link: 'blogs',
-    //     },
-    //   ],
-    // },
+    {
+      title: 'Statistics',
+      icon: 'bar_chart',
+      color: '#000000',
+      subMenu: [
+        {
+          title: 'Forms',
+          icon: 'money',
+          link: 'forms',
+          color: '#000000',
+        },
+        {
+          title: 'Blogs',
+          icon: 'people',
+          color: '#000000',
+          link: 'blogs',
+        },
+      ],
+    },
   ];
 
 

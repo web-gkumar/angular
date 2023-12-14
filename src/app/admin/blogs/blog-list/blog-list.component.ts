@@ -20,7 +20,6 @@ export class BlogListComponent implements OnInit {
   dataSource: any = [];
   columnNames: any = [];
   selection = new SelectionModel<any>(true, []);
-  imageUrl$: Observable<string>;
 
 
 
@@ -29,7 +28,7 @@ export class BlogListComponent implements OnInit {
     private FileUploadService: FileUploadService,
     private storage: AngularFireStorage,
     public dialog: MatDialog
-    ) { this.imageUrl$ = storage.ref("application/aal-bio-blogimage (1).jpg").getDownloadURL();}
+    ) { }
 
   ngOnInit(): void {
     this.crudService.getAll().snapshotChanges().pipe(

@@ -21,7 +21,8 @@
             </div>
 
             <div class="col-md-6">
-                <input type="file" (change)="onFileSelected($event)" formControlName="blog_image" accept="image/*" multiple />
+                <button mat-raised-button color="primary" formControlName="blog_image" (click)="fileupload()">Image Upload</button>
+                <!-- <input type="file" (change)="onFileSelected($event)" formControlName="blog_image" accept="image/*" multiple /> -->
                 <small class="text-danger" *ngIf="blogForms.controls['blog_image'].touched && blogForms.controls['blog_image'].errors">Image Is Required</small>
             </div>
 

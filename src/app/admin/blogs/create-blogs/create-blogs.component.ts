@@ -76,8 +76,9 @@ export class CreateBlogsComponent implements OnInit {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     const path = `application/${file.name}`;
-    if(file && file.length > 0) {
-      this.fileUploadService.uploadFile(file, path);
+    if(file) {
+      let downaloURl = this.fileUploadService.uploadFile(file, path);
+      console.log(downaloURl);
     }
   }
  
