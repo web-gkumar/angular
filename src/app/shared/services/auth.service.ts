@@ -58,7 +58,7 @@ export class AuthService {
 
   Login(email: string, password: string) {
    return this.auth.signInWithEmailAndPassword(email,password).then(res => {      
-      this.router.navigate(['/admin']);
+      this.router.navigate(['admin/dashboard']);
       alert("Successfull Login")
     }).catch( error =>{
       window.alert(error.message)
@@ -76,7 +76,7 @@ export class AuthService {
 
   GoogleAuth() {
     return this.AuthLogin(new GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['admin']);
+      this.router.navigate(['admin/dashboard']);
     }).then( res => {
       alert("Google Login Successfull")
     }).catch(error => {
@@ -85,7 +85,7 @@ export class AuthService {
   }
   AuthLogin(provider: any) {
     return this.auth.signInWithPopup(provider).then((result) => {
-        this.router.navigate(['admin']);
+        this.router.navigate(['admin/dashboard']);
        //  this.SetUserData(result.user);
       })
       .catch((error) => {

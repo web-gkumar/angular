@@ -5,7 +5,7 @@ import { PageNotFoundComponent } from './include/page-not-found/page-not-found.c
 const appRoutes: Routes = [
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)},
-  { path: '', redirectTo: '/admin', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin/dashboard', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

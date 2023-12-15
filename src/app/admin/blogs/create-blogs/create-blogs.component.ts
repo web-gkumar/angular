@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
 import { FileUploadService } from 'src/app/shared/services/file-upload.service';
 import { FileUploadComponent } from 'src/app/models/file-upload/file-upload.component';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Observable, finalize } from 'rxjs';
 
 
 @Component({
@@ -26,7 +29,9 @@ export class CreateBlogsComponent implements OnInit {
     public dialogRef: MatDialogRef<CreateBlogsComponent>,
     private fileUploadService:FileUploadService,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private db: AngularFireDatabase,
+    private storage: AngularFireStorage
     ) {
       this.blogForms = this.formBuilder.group({
         id: [],
@@ -40,7 +45,7 @@ export class CreateBlogsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.blogForms.setValue(this.data)
+    this.blogForms.patchValue(this.data)
   }
 
 
@@ -64,7 +69,6 @@ export class CreateBlogsComponent implements OnInit {
       width: '1000px',
       data: {
         title: 'Blog Image Post',
-        
       }
     })
     .afterClosed().subscribe(result => {
@@ -73,13 +77,33 @@ export class CreateBlogsComponent implements OnInit {
 
   }
 
-  onFileSelected(event: any) {
+  // onFileSelected(event: any) {
+  //   const file = event.target.files[0];
+  //   const path = `application/${file.name}`;
+  //   if(file) {
+  //     let downaloURl = this.fileUploadService.uploadImage(file);
+  //     console.log(downaloURl);
+  //   }
+  // }
+
+
+  downloadURL!: Observable<string>;
+  imagepath: any;
+
+  onFileSelected(event:any) {
     const file = event.target.files[0];
-    const path = `application/${file.name}`;
-    if(file) {
-      let downaloURl = this.fileUploadService.uploadFile(file, path);
-      console.log(downaloURl);
-    }
+    const filePath = `application/${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    task.snapshotChanges().pipe(finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.imagepath = url;
+            }
+          });
+        })
+      ).subscribe();
   }
  
 }

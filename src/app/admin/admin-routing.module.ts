@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const adminRoutes: Routes = [
@@ -10,7 +9,7 @@ const adminRoutes: Routes = [
         children: [
           { path: 'forms', loadChildren: () => import('./builder/builder.module').then(m => m.BuilderModule)},
           { path: 'blogs', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule)},
-          { path: '', component: DashboardComponent }
+          { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m =>m.DashboardModule)},
         ]
       }
     ]

@@ -7,7 +7,6 @@ import { HeaderComponent } from '../include/header/header.component';
 import { FooterComponent } from '../include/footer/footer.component';
 import { SidebarComponent } from '../include/sidebar/sidebar.component';
 import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FooterComponent,
     SidebarComponent,
     AdminComponent,
-    DashboardComponent
   ],
   imports: [
     CommonModule,

@@ -2,6 +2,6 @@
   <mat-toolbar class="bg-white">
     <app-header class="w-100" (menuToggle)="toggleMenu()"></app-header>
   </mat-toolbar>
-  <mat-drawer #drawer mode="side" [opened]="opened"><app-sidebar [menu]="menu"></app-sidebar></mat-drawer>
+  <mat-drawer #drawer mode="side" [opened]="opened"><app-sidebar></app-sidebar></mat-drawer>
   <router-outlet></router-outlet>
 </mat-drawer-container>
