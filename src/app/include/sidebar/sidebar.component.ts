@@ -13,47 +13,69 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  
-  
-
   menu:any = [
     {
       title: 'Dashboard',
       icon: 'home',
       link: 'dashboard',
-      color: '#000000',
     },
+    {
+      title: 'Post',
+      icon: 'bar_chart',
+      subMenu: [
+        {
+          title: 'All Post',
+          icon: 'money',
+          link: 'post/all-post',
+        },
+        {
+          title: 'Add New Post',
+          icon: 'money',
+          link: 'post/new-post',
+        },
+        {
+          title: 'Category',
+          icon: 'people',
+          link: 'post/category',
+        },
+        {
+          title: 'Tags',
+          icon: 'people',
+          link: 'post/tag',
+        },
+      ],
+    },
+    {
+      title: 'Media',
+      icon: 'collections_bookmark',
+      link: '',
+    },
+    {
+      title: 'Pages',
+      icon: 'layers',
+      link: '',
+    },
+    {
+      title: 'Comments',
+      icon: 'forum',
+      link: '',
+    },
+    {
+      title: 'Settings',
+      icon: 'settings',
+      link: '',
+    },
+    {
+      title: 'Blog',
+      icon: 'rss_feed',
+      link: 'blogs',
+    },
+    
     {
       title: 'Forms',
       icon: 'design_services',
       link: 'forms',
-      color: '#000000',
-    },
-    {
-      title: 'Blogs',
-      icon: 'rss_feed',
-      link: 'blogs',
-      color: '#000000',
-    },
-    {
-      title: 'Statistics',
-      icon: 'bar_chart',
-      color: '#000000',
-      subMenu: [
-        {
-          title: 'Forms',
-          icon: 'money',
-          link: 'forms',
-          color: '#000000',
-        },
-        {
-          title: 'Blogs',
-          icon: 'people',
-          color: '#000000',
-          link: 'blogs',
-        },
-      ],
-    },
+    }
   ];
 
 

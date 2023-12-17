@@ -1,13 +1,15 @@
 html, body {height:100%; }
 body {margin:0;font-family:Roboto, "Helvetica Neue", sans-serif; }
 img {max-width:100%;}
+a {text-decoration:none;}
 /**---- Theming Css --*/
 .mat-drawer-container {background:var(--bgcolor) !important;}
 .mat-drawer-content {height:calc(100vh) !important;}
-.mat-toolbar-row, .mat-toolbar-single-row {position:sticky;top:0;z-index:9;}
+.mat-toolbar-row, .mat-toolbar-single-row {position:sticky;top:0;z-index:9;height:35px;background:var(--themedark);}
 .mat-form-field {width:100%;}
-.mat-drawer-inner-container, .mat-drawer {overflow:visible !important;}
+.mat-drawer-inner-container, .mat-drawer {overflow:visible !important;border:none;}
+.sticky {position:sticky;top:35px;z-index:9;}
 
-.pagetitle {padding:10px 20px;border-bottom:1px solid #ccc;
+.pagetitle {padding:5px 20px;border-bottom:1px solid #ccc;
     h3 {font-weight:bold;}
 }

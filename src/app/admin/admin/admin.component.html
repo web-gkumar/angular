@@ -1,5 +1,5 @@
 <mat-drawer-container autosize>
-  <mat-toolbar class="bg-white">
+  <mat-toolbar>
     <app-header class="w-100" (menuToggle)="toggleMenu()"></app-header>
   </mat-toolbar>
   <mat-drawer #drawer mode="side" [opened]="opened"><app-sidebar></app-sidebar></mat-drawer>

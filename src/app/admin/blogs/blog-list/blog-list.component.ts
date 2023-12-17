@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
-import { FileUploadService } from 'src/app/shared/services/file-upload.service';
 import { ConformationDailogComponent } from '../../../models/conformation-dailog/conformation-dailog.component';
 import { CreateBlogsComponent } from '../create-blogs/create-blogs.component';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
-import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
-import { SelectionModel } from '@angular/cdk/collections';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -19,14 +15,11 @@ export class BlogListComponent implements OnInit {
 
   dataSource: any = [];
   columnNames: any = [];
-  selection = new SelectionModel<any>(true, []);
 
 
 
   constructor(
     private crudService: CrudService,
-    private FileUploadService: FileUploadService,
-    private storage: AngularFireStorage,
     public dialog: MatDialog
     ) { }
 

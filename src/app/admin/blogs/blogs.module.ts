@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlogsRoutingModule } from './blogs-routing.module';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '../../include/material/material.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { CreateBlogsComponent } from './create-blogs/create-blogs.component';
 

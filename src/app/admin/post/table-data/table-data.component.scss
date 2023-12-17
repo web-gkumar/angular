@@ -1,0 +1,12 @@
+table {
+    thead {
+        th {width:15%;}
+        th:nth-child(1) {width:2%;}
+        th:nth-child(2) {display:none;}
+    }
+    tbody {
+        td {width:15%;};
+        td:nth-child(1) {width:2%;}
+        td:nth-child(2) {display:none;}
+    }
+}

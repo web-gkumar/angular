@@ -1,0 +1,35 @@
+<section class="pagetitle bg-white">
+    <div class="d-flex align-items-center">
+        <h3 class="m-0 me-4">Categories:</h3>
+    </div>
+</section>
+
+<section class="row mx-0 my-4">
+    <div class="col-md-4">
+        <div class="bg-white p-3 hv-100">
+            <h3>Add New Category</h3>
+            <form [formGroup]="categoryForm">
+                <mat-form-field class="w-100">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+        
+                <mat-form-field class="w-100">
+                    <mat-label>Slug</mat-label>
+                    <input matInput formControlName="slug">
+                </mat-form-field>
+        
+                <mat-form-field class="w-100">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                  </mat-form-field>
+                  <button mat-stroked-button color="primary" class="w-100" [disabled]="categoryForm.invalid" (click)="addCategory()"><small>{{tableResponseData ? 'Update': 'Add New'}}</small></button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <app-table-data [tableData]="CategoryListData" [columnData]="categoryColumnData" (tableResponse)="getResponse($event)"></app-table-data>
+    </div>
+</section>
+
+

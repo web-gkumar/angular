@@ -1,28 +1,25 @@
 <section class="sidebar">
     <div class="logo"><a href="#"><img src="assets/img/logo.png"></a></div>
-    <ul class="ps-4 py-4">
+    <ul class="py-4">
         <ng-container *ngFor="let item of menu">
             <ng-container *ngIf="item.subMenu === undefined">
                 <ng-container *ngIf="item.title">
-                    <button mat-button class="w-100 text-start py-1 my-2" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                    <button mat-button class="w-100 text-start py-1" [routerLink]="item.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         <mat-icon class="mx-1">{{ item.icon }}</mat-icon>
-                        <span class="ms-2">{{ item.title }}</span>
+                        <span class="ms-1">{{ item.title }}</span>
                     </button>
                 </ng-container>
             </ng-container>
 
             <ng-container *ngIf="item.subMenu?.length > 0">
                 <li>
-                    <button mat-button class="w-100 text-start py-1 my-2">
+                    <button mat-button class="w-100 text-start py-1" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         <mat-icon class="mx-1">{{ item.icon }}</mat-icon>
-                        <span class="ms-2">{{ item.title }}</span>
+                        <span class="ms-1">{{ item.title }}</span>
                     </button>
-                    <div class="submenu bg-white">
+                    <div class="submenu">
                         <li *ngFor="let data of item.subMenu">
-                            <a [routerLink]="data.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                                <button mat-icon-button><mat-icon [style.color]="data.color">{{ data.icon }}</mat-icon></button>
-                                {{ data.title }}
-                            </a>
+                            <a class="py-2" [routerLink]="data.link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ data.title }}</a>
                         </li>
                     </div>
                 </li>

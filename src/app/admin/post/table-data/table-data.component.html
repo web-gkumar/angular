@@ -1,0 +1,18 @@
+<section class="bg-white" *ngIf="tableData">
+    <table class="table table-striped border">
+        <thead>
+            <tr class="text-left">
+                <th><mat-checkbox color="primary" class="ms-2"></mat-checkbox></th>
+                <th *ngFor="let data of columnData">{{ data | titlecase}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let item of tableData; let i = index;'>
+                <td><mat-checkbox color="primary" class="ms-2"></mat-checkbox></td>
+                <td *ngFor='let key of columnData'><a href="javascript:void(0)" (click)="update(item)">{{item[key]}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+{{'Total Items:' + tableData.length}}

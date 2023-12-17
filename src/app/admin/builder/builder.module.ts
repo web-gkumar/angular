@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BuilderRoutingModule } from './builder-routing.module';
-import { MaterialModule } from '../../material/material.module';
+import { MaterialModule } from '../../include/material/material.module';
 import { FormsListComponent } from './forms-list/forms-list.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { FormFieldsComponent } from './form-fields/form-fields.component';

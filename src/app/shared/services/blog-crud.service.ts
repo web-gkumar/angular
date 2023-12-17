@@ -18,9 +18,20 @@ export class CrudService {
     private storage: AngularFireStorage
   ) {}
 
-  createBlogpost(postData: Blogs) {
-    return this.db.collection(this.collectionName).add({ ...postData });
+  
+  createPost(postData: Blogs, collectionName:any) {
+    return this.db.collection(collectionName).add({ ...postData });
   }
+  getAllPost(collectionName:any) {
+    return this.db.collection(collectionName);
+  }
+  updatePost(id: string, data: any, collectionName: any) {
+    return this.db.collection(collectionName).doc(id).update(data);
+  }
+
+
+
+
 
   getAll(): AngularFirestoreCollection<any> {
     return this.db.collection(this.collectionName);
