@@ -5,6 +5,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +16,7 @@ export class CrudService {
 
   constructor(
     private db: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
   ) {}
 
   
@@ -29,10 +30,49 @@ export class CrudService {
     return this.db.collection(collectionName).doc(id).update(data);
   }
 
+  uploadFile(file: File, path: string): Observable<string> {
+    const filePath = `${path}/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // Get file download URL as observable
+    return new Observable<string>(observer => {
+      task.snapshotChanges().subscribe(
+        () => {},
+        error => observer.error(error),
+        () => fileRef.getDownloadURL().subscribe(url => observer.next(url))
+      );
+    });
+  }
+  
+  uploadFile2(file: File, path: string): Observable<any> {
+    const ref = this.storage.ref(path);
+    const task = this.storage.upload(path, file);
+    return task.snapshotChanges().pipe( map(() => ref.getDownloadURL()),
+      catchError((error) => {
+        console.error('Error uploading file: ', error);
+        return of(null);
+      })
+    );
+  }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   getAll(): AngularFirestoreCollection<any> {
     return this.db.collection(this.collectionName);
   }

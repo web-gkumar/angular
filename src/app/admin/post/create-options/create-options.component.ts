@@ -14,6 +14,7 @@ export class CreateOptionsComponent implements OnInit {
   collectionName = 'CATEGORY';
   CategoryListData:any;
   categoryForm:any = FormGroup;
+  step = 0;
 
   constructor(private crudService: CrudService,) {
     this.crudService.getAllPost(this.collectionName).snapshotChanges().pipe(
@@ -32,6 +33,9 @@ export class CreateOptionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setStep(index: number) {
+    this.step = index;
+  }
 
   checkCategory(data:any,dataChecked:boolean) {
 

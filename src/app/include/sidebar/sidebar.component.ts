@@ -48,8 +48,22 @@ export class SidebarComponent implements OnInit {
     {
       title: 'Media',
       icon: 'collections_bookmark',
-      link: '',
-    },
+      subMenu: [
+        {
+          title: 'library',
+          icon: 'money',
+          link: 'media/library',
+        },
+        {
+          title: 'Add New library',
+          icon: 'money',
+          link: 'media/add-library',
+        },
+      ]
+    }
+    
+    
+    ,
     {
       title: 'Pages',
       icon: 'layers',

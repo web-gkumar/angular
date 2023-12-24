@@ -9,12 +9,12 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { FilterPipe } from './shared/pipe/filter.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FilterPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,7 +24,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AngularFireStorageModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{ provide: BUCKET, useValue: 'my-bucket-name' }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

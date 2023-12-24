@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyChwVHxmukXszHgeEfJnpwMqdtBsFfX4aM",
-    authDomain: "application-328219.firebaseapp.com",
-    databaseURL: "https://application-328219-default-rtdb.firebaseio.com",
-    projectId: "application-328219",
-    storageBucket: "application-328219.appspot.com",
-    messagingSenderId: "908138819558",
-    appId: "1:908138819558:web:78c25e0e81486fa6eaf027",
-    measurementId: "G-PMF8ZCSW2J"
+    apiKey: "AIzaSyDxPQ8R_5zQIxIgbzr2-oBq89kbDczvoo4",
+    authDomain: "wordpress-3db78.firebaseapp.com",
+    projectId: "wordpress-3db78",
+    storageBucket: "wordpress-3db78.appspot.com",
+    messagingSenderId: "310546946720",
+    appId: "1:310546946720:web:13793adb6a571ee25947c5",
+    measurementId: "G-L5GPJ49HG2"
   }
 };
 

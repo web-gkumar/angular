@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center justify-content-between">
         <h3 class="m-0 me-4">Add New:</h3>
         <div>
-            <button mat-flat-button color="primary" class="mx-2"><small>Publish</small></button>
+            <button mat-flat-button color="primary" class="mx-2" (click)="public()"><small>Publish</small></button>
             <button mat-icon-button (click)="drawer.toggle()"><mat-icon>settings</mat-icon></button>
         </div>
     </div>
@@ -14,7 +14,14 @@
     <mat-drawer #drawer position="end" mode="side" opened>
       <app-create-options></app-create-options>
     </mat-drawer>
-
-  
+    <section class="p-4 bg-white" style="height:100%;">
+        <form [formGroup]="pageForm">
+            <mat-form-field class="w-100">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" formControlName="title">
+            </mat-form-field>
+            <angular-editor [(ngModel)]="htmlContent" [config]="config" formControlName="textEditor"></angular-editor>
+        </form>
+    </section>
   </mat-drawer-container>
   

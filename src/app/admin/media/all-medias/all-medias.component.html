@@ -1,0 +1,43 @@
+
+<section class="pagetitle bg-white mb-3">
+    <div class="d-flex align-items-center justify-content-between">
+        <div>
+            <button mat-icon-button color="primary" (click)="changeView('grid')">
+                <mat-icon>{{ isViewChange? 'grid_view': 'view_list'}}</mat-icon>
+            </button>
+        </div>
+        <div class="searchbox">
+            <input type="search" placeholder="Search Items...">
+        </div>
+    </div>
+</section>
+
+
+<section class="imagelist">
+    <ng-container *ngIf="isViewChange">
+        <div class="imagebox bg-white" *ngFor="let imageUrl of filelist | async">
+            <img [src]="imageUrl">
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isViewChange">
+        <table class="table border bg-white">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col"><mat-checkbox color="primary"></mat-checkbox></th>
+                <th scope="col">File</th>
+                <th scope="col">title</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let imageUrl of filelist | async">
+                <td><mat-checkbox color="primary"></mat-checkbox></td>
+                <td><div class="thumbimg"><img [src]="imageUrl"></div></td>
+                <td>admin</td>
+                <td>15-01-2023</td>
+              </tr>
+            </tbody>
+          </table>
+    </ng-container>
+</section>

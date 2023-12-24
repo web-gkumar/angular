@@ -9,8 +9,9 @@ const adminRoutes: Routes = [
         children: [
           { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m =>m.DashboardModule)},
           { path: 'post', loadChildren: () => import('./post/post.module').then(m =>m.PostModule)},
-          { path: 'forms', loadChildren: () => import('./builder/builder.module').then(m => m.BuilderModule)},
-          { path: 'blogs', loadChildren: () => import('./blogs/blogs.module').then(m => m.BlogsModule)},
+          { path: 'media', loadChildren:() => import('./media/media.module').then(m => m.MediaModule)},
+          { path: 'forms', loadChildren:() => import('./builder/builder.module').then(m => m.BuilderModule)},
+          { path: 'blogs', loadChildren:() => import('./blogs/blogs.module').then(m => m.BlogsModule)},
           
         ]
       }

@@ -4,10 +4,7 @@
     </div>
 </section>
 
-<section class="m-3">
-    <p><a href="#">All (7)</a> | <a href="#">Published (7)</a> | <a href="#">Trash (1)</a></p>
-</section>
 
-<section class="bg-white mx-3">
-    <app-table-data></app-table-data>
+<section class="bg-white mx-3 allpost">
+    <app-table-data [tableData]="postData" [columnData]="tableColumnData" (tableResponse)="getResponse($event)"></app-table-data>
 </section>

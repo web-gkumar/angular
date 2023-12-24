@@ -13,8 +13,8 @@ export class TagsComponent implements OnInit {
 
   tagForm:FormGroup;
   collectionName = 'TAGS'
-  CategoryListData:any;
-  categoryColumnData:any;
+  tablerowData:any;
+  columnData:any;
   tableResponseData:any;
 
   constructor(
@@ -56,8 +56,8 @@ export class TagsComponent implements OnInit {
       )
     ).subscribe(data => {
       if(data && data.length > 0) {
-        this.CategoryListData = data;
-        this.categoryColumnData = Object.keys(data[0]);
+        this.tablerowData = data;
+        this.columnData = Object.keys(data[0]);
       }
     });
   }

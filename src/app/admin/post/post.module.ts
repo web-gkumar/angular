@@ -9,7 +9,7 @@ import { CategoryComponent } from './category/category.component';
 import { TagsComponent } from './tags/tags.component';
 import { TableDataComponent } from './table-data/table-data.component';
 import { CreateOptionsComponent } from './create-options/create-options.component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { CreateOptionsComponent } from './create-options/create-options.componen
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    AngularEditorModule,
     PostRoutingModule
   ]
 })
