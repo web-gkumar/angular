@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
+import { MediaFileComponent } from '../../../models/media-file/media-file.component';
 import { map } from 'rxjs';
 
 @Component({
@@ -13,10 +15,14 @@ export class CreateOptionsComponent implements OnInit {
 
   collectionName = 'CATEGORY';
   CategoryListData:any;
+  featuredImage:any;
   categoryForm:any = FormGroup;
   step = 0;
 
-  constructor(private crudService: CrudService,) {
+  constructor(
+    private crudService: CrudService,
+    public dialog: MatDialog
+    ) {
     this.crudService.getAllPost(this.collectionName).snapshotChanges().pipe(
       map((changes: any[]) =>
         changes.map(c =>
@@ -39,6 +45,19 @@ export class CreateOptionsComponent implements OnInit {
 
   checkCategory(data:any,dataChecked:boolean) {
 
+  }
+
+  openDialog() {
+    this.dialog.open(MediaFileComponent, {
+      width: '1100px',
+      data: {
+        title: 'Featured Images',
+        btntitle: 'Set Featured Images',
+      },
+    })
+    .afterClosed().subscribe(result => {
+      this.featuredImage = result;
+    });
   }
 
 }

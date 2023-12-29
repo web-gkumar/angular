@@ -79,17 +79,17 @@ export class SidebarComponent implements OnInit {
       icon: 'settings',
       link: '',
     },
-    {
-      title: 'Blog',
-      icon: 'rss_feed',
-      link: 'blogs',
-    },
+    // {
+    //   title: 'Blog',
+    //   icon: 'rss_feed',
+    //   link: 'blogs',
+    // },
     
-    {
-      title: 'Forms',
-      icon: 'design_services',
-      link: 'forms',
-    }
+    // {
+    //   title: 'Forms',
+    //   icon: 'design_services',
+    //   link: 'forms',
+    // }
   ];
 
 

@@ -13,20 +13,3 @@
         <small>Maximum upload file size: 40 MB.</small>
     </div>
 </section>
-
-
-<input type="file" (change)="fileUpload($event)" accept="image/*"/>
-    <table class="table" *ngIf="allUploadedImage">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">Image</th>
-            <th scope="col">action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor='let data of allUploadedImage; let i = index;'>
-            <td><img [src]="data" width="120px"></td>
-            <td><a [href]="data" download>Download</a>, delete</td>
-          </tr>
-        </tbody>
-      </table>

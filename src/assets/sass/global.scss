@@ -5,11 +5,14 @@ a {text-decoration:none;}
 /**---- Theming Css --*/
 .mat-drawer-container {background:var(--bgcolor) !important;}
 .mat-drawer-content {height:calc(100vh) !important;}
+.mat-expansion-panel-body {padding:0 15px 15px !important;}
+.mat-expansion-panel-header {padding:0 15px !important;}
+.mat-expansion-panel:not([class*=mat-elevation-z]) {box-shadow:none;border-bottom:1px solid var(--themelight);margin:0px;}
 .mat-toolbar-row, .mat-toolbar-single-row {position:sticky;top:0;z-index:9;height:35px;background:var(--themedark);}
 .mat-form-field {width:100%;}
 .mat-drawer-inner-container, .mat-drawer {overflow:visible !important;border:none;}
 .sticky {position:sticky;top:35px;z-index:9;}
 
-.pagetitle {padding:5px 20px;border-bottom:1px solid #ccc;
+.pagetitle {padding:5px 20px;border-bottom:1px solid var(--themelight);
     h3 {font-weight:bold;}
 }

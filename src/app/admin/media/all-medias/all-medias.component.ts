@@ -10,7 +10,7 @@ import { getStorage, ref, listAll, getDownloadURL } from '@firebase/storage';
 export class AllMediasComponent implements OnInit {
 
   filelist:any = [];
-  collectionName= 'application'
+  collectionName= 'application';
 
 
 

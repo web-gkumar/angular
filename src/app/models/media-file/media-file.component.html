@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-tab-group fitInkBarToContent animationDuration="0ms">
+        <mat-tab label="Media Library">
+            <section class="imagelist">
+                <ng-container>
+                    <div class="imagebox bg-white" *ngFor="let imageUrl of filelist | async">
+                        <span (click)="selectedImage(imageUrl)"><img [src]="imageUrl"></span>
+                    </div>
+                </ng-container>
+            </section>
+        </mat-tab>
+
+        <mat-tab label="Upload Files">
+            <section class="text-center m-4">
+                <div class="fileUploading p-5">
+                    <h4 class="m-0">Drop files to upload</h4>
+                    <small>Or</small>
+                    <p><input type="file" multiple></p>
+                    <small>Maximum upload file size: 40 MB.</small>
+                </div>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="selectedImages" cdkFocusInitial>{{data.btntitle}}</button>
+</mat-dialog-actions>

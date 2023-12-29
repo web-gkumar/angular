@@ -11,7 +11,7 @@ export class AllPostsComponent implements OnInit {
 
   collectionName = 'POSTS';
   postData:any;
-  tableColumnData:any;
+  columnData:any;
 
   constructor(private crudService: CrudService,) { }
 
@@ -30,8 +30,9 @@ export class AllPostsComponent implements OnInit {
       )
     ).subscribe(data => {
       if(data && data.length > 0) {
+        // this.modifyGridRowDate(data)
         this.postData = data;
-        this.tableColumnData = Object.keys(data[0]);
+        this.columnData = Object.keys(data[0]);
       }
     });
   }
@@ -39,5 +40,22 @@ export class AllPostsComponent implements OnInit {
   getResponse(response:any) {
     console.log(response)
   }
+
+
+
+  // modifyGridRowDate(data:any) {
+  //   data.forEach((element:any) => {
+  //     if(element && element.id && element.textEditor) {
+  //       this.postData = [
+  //         element
+  //       ];
+  //     }
+  //   });
+  //  console.log(this.postData);
+  // }
+
+
+
+
 
 }

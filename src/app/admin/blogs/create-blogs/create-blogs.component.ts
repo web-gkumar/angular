@@ -50,7 +50,6 @@ export class CreateBlogsComponent implements OnInit {
   change(event:any)
   {
     if(event.value) {
-     // console.log(event.source.value, event.source.selected);
     }
   }
 
