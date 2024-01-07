@@ -6,9 +6,10 @@
     input {border:1px solid #ccc;padding:5px 10px;margin-left:10px;}
 }
 .imagelist {display:flex;
-    .imagebox {width:130px;height:130px;border:1px solid #eee;overflow:hidden;display:flex;margin:5px;align-items:center;
+    .imagebox {width:130px;height:130px;border:4px solid #eee;overflow:hidden;display:flex;margin:5px;align-items:center;cursor:pointer;
         img {width:100%;}
     }
+    .selectimg {border-color:var(--darkborder)};
     .thumbimg { width:80px;height:80px;overflow:hidden;display:flex;align-items:center;border:1px solid #eee;
         img {width:100%;}
     }

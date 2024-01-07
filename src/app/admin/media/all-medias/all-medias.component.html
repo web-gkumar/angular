@@ -27,6 +27,7 @@
                 <th scope="col"><mat-checkbox color="primary"></mat-checkbox></th>
                 <th scope="col">File</th>
                 <th scope="col">title</th>
+                <th scope="col">Author</th>
                 <th scope="col">Date</th>
               </tr>
             </thead>
@@ -34,8 +35,9 @@
               <tr *ngFor="let imageUrl of filelist | async">
                 <td><mat-checkbox color="primary"></mat-checkbox></td>
                 <td><div class="thumbimg"><img [src]="imageUrl"></div></td>
-                <td>admin</td>
-                <td>15-01-2023</td>
+                <td>--</td>
+                <th scope="col">--</th>
+                <td>--</td>
               </tr>
             </tbody>
           </table>

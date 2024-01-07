@@ -1,0 +1,39 @@
+<section class="pageoptions">
+      <mat-accordion>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>Summary</mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+  
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>Categories</mat-expansion-panel-header>
+            <p *ngFor="let data of CategoryListData">
+              <mat-checkbox (change)="checkCategory(data, $event.checked)" color="primary">{{data.name}}</mat-checkbox>
+            </p>
+          </mat-expansion-panel>
+  
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>Tags</mat-expansion-panel-header>
+              <p *ngFor="let data of tagsData">
+                <mat-checkbox (change)="checktags(data, $event.checked)" color="primary">{{data.name}}</mat-checkbox>
+              </p>
+          </mat-expansion-panel>
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Featured Image</mat-expansion-panel-header>
+              <div class="featureimagelist">
+                <div class="d-flex align-items-center justify-content-center h-100" (click)="featureImg()">
+                  <span *ngIf="!featuredImage">Set Featured Image</span>
+                  <span *ngIf="featuredImage && featuredImage.length > 0">
+                    <img [src]="featuredImage">
+                  </span>
+                </div>
+                <div class="featureoption align-items-between" *ngIf="featuredImage && featuredImage.length > 0">
+                  <span (click)="featureImg()">Replace</span>
+                  <span (click)="removeFeatureImg()">Remove</span>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          
+      </mat-accordion>
+  </section>

@@ -1,0 +1,10 @@
+.pageoptions {width:250px;height:100%;;
+    .featureimagelist {position:relative;background:var(--themelight);height:130px;overflow:hidden;
+        .featureoption{position:absolute;left:0;bottom:0;width:100%;z-index:2;display:none;
+            span {background:#fff;width:100%;text-align:center;margin:7px;padding:5px;font-size:12px;cursor:pointer;}
+        }
+        &:hover {
+            .featureoption {display:flex;}
+        }
+    }
+}

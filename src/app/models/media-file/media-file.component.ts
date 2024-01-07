@@ -24,7 +24,7 @@ export class MediaFileComponent implements OnInit {
   filelist:any = [];
   collectionName= 'application';
   selectedImages:any;
-
+  selectedIndex:any;
   constructor(
     public dialogRef: MatDialogRef<MediaFileComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -42,8 +42,9 @@ export class MediaFileComponent implements OnInit {
   }
 
 
-  selectedImage(imageUrl:any) {
+  selectedImage(imageUrl:any, index:any) {
     this.selectedImages = imageUrl;
+    this.selectedIndex = index;
   }
 
 }

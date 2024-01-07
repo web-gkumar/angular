@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { CrudService } from 'src/app/shared/services/blog-crud.service';
@@ -6,24 +6,23 @@ import { MediaFileComponent } from '../../../models/media-file/media-file.compon
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-create-options',
-  templateUrl: './create-options.component.html',
-  styleUrls: ['./create-options.component.scss']
+  selector: 'app-pannel-form',
+  templateUrl: './pannel-form.component.html',
+  styleUrls: ['./pannel-form.component.scss']
 })
-export class CreateOptionsComponent implements OnInit {
+export class PannelFormComponent implements OnInit {
 
-
-  collectionName = 'CATEGORY';
   CategoryListData:any;
+  tagsData:any;
   featuredImage:any;
-  categoryForm:any = FormGroup;
-  step = 0;
+  
+  @Output() PannelResponse = new EventEmitter<any>();
 
   constructor(
     private crudService: CrudService,
     public dialog: MatDialog
     ) {
-    this.crudService.getAllPost(this.collectionName).snapshotChanges().pipe(
+    this.crudService.getAllPost('CATEGORY').snapshotChanges().pipe(
       map((changes: any[]) =>
         changes.map(c =>
           ({ id: c.payload.doc.id, ...c.payload.doc.data() })
@@ -34,20 +33,40 @@ export class CreateOptionsComponent implements OnInit {
         this.CategoryListData = data;
       }
     });
+
+    this.crudService.getAllPost('TAGS').snapshotChanges().pipe(
+      map((changes: any[]) =>
+        changes.map(c =>
+          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(data => {
+      if(data && data.length > 0) {
+        this.tagsData = data;
+      }
+    });
   }
 
   ngOnInit(): void {
+   
   }
 
-  setStep(index: number) {
-    this.step = index;
-  }
 
   checkCategory(data:any,dataChecked:boolean) {
-
+    if(dataChecked) {
+      this.PannelResponse.emit(data.name);
+    }
+    
   }
 
-  openDialog() {
+  checktags(data:any,dataChecked:boolean) {
+    if(dataChecked) {
+      this.PannelResponse.emit(data.name);
+    }
+    
+  }
+
+  featureImg() {
     this.dialog.open(MediaFileComponent, {
       width: '1100px',
       data: {
@@ -57,7 +76,14 @@ export class CreateOptionsComponent implements OnInit {
     })
     .afterClosed().subscribe(result => {
       this.featuredImage = result;
+      this.PannelResponse.emit(this.featuredImage);
     });
   }
+
+
+  removeFeatureImg() {
+    this.featuredImage = '';
+  }
+
 
 }

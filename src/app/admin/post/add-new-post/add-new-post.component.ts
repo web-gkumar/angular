@@ -14,6 +14,7 @@ export class AddNewPostComponent implements OnInit {
   pageForm!:FormGroup;
   collectionName = 'POSTS';
   htmlContent = '';
+  pannerResponseData:any = [];
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -54,7 +55,25 @@ export class AddNewPostComponent implements OnInit {
   }
 
   public(){
+    if(this.pageForm) {
+      this.pageForm.value.push(this.pannerResponseData);
+    }
     this.crudService.createPost(this.pageForm.value, this.collectionName);
   }
+
+
+  pannelResponse(response:any) {
+    if(response) {
+      let pannerData = [
+        response
+      ];
+      this.pannerResponseData.push(pannerData);
+    }else {
+      this.pannerResponseData = [];
+    }
+  }
+
+
+
 
 }

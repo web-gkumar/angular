@@ -12,7 +12,7 @@
 
 <mat-drawer-container autosize>
     <mat-drawer #drawer position="end" mode="side" opened>
-      <app-create-options></app-create-options>
+      <app-pannel-form (PannelResponse)="pannelResponse($event)"></app-pannel-form>
     </mat-drawer>
     <section class="p-4 bg-white" style="height:100%;">
         <form [formGroup]="pageForm">

@@ -3,9 +3,9 @@
     <mat-tab-group fitInkBarToContent animationDuration="0ms">
         <mat-tab label="Media Library">
             <section class="imagelist">
-                <ng-container>
-                    <div class="imagebox bg-white" *ngFor="let imageUrl of filelist | async">
-                        <span (click)="selectedImage(imageUrl)"><img [src]="imageUrl"></span>
+                <ng-container *ngFor="let imageUrl of filelist | async; let i = index" >
+                    <div class="imagebox bg-white" [ngClass]="selectedIndex == i ? 'selectimg': ''" (click)="selectedImage(imageUrl, i)">
+                        <img [src]="imageUrl">
                     </div>
                 </ng-container>
             </section>

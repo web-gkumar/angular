@@ -8,8 +8,8 @@ import { AddNewPostComponent } from './add-new-post/add-new-post.component';
 import { CategoryComponent } from './category/category.component';
 import { TagsComponent } from './tags/tags.component';
 import { TableDataComponent } from './table-data/table-data.component';
-import { CreateOptionsComponent } from './create-options/create-options.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { PannelFormComponent } from './pannel-form/pannel-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     CategoryComponent,
     TagsComponent,
     TableDataComponent,
-    CreateOptionsComponent
+    PannelFormComponent
   ],
   imports: [
     CommonModule,
