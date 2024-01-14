@@ -13,6 +13,10 @@ const adminRoutes: Routes = [
           { path: 'forms', loadChildren:() => import('./builder/builder.module').then(m => m.BuilderModule)},
           { path: 'blogs', loadChildren:() => import('./blogs/blogs.module').then(m => m.BlogsModule)},
           
+          { path: 'banners', loadChildren: () => import('./videos-project/bannner/bannner.module').then(m => m.BannnerModule)},
+          { path: 'news', loadChildren: () => import('./videos-project/news/news.module').then(m => m.NewsModule)},
+          { path: 'movies', loadChildren: () => import('./videos-project/movies/movies.module').then(m => m.MoviesModule)},
+          
         ]
       }
     ]

@@ -69,7 +69,7 @@ export class BlogListComponent implements OnInit {
     })
       .afterClosed().subscribe((confirmado: Boolean) => {
         if (confirmado) {
-          this.crudService.delete(id);
+          this.crudService.delete(id, 'Blogs');
         } else {
 
         }

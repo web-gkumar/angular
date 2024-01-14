@@ -5,8 +5,8 @@
 .pagetitle {
     input {border:1px solid #ccc;padding:5px 10px;margin-left:10px;}
 }
-.imagelist {display:flex;
-    .imagebox {width:130px;height:130px;border:4px solid #eee;overflow:hidden;display:flex;margin:5px;align-items:center;cursor:pointer;
+.imagelist {
+    .imagebox {width:130px;height:130px;border:4px solid #eee;overflow:hidden;display:inline-block;margin:5px;align-items:center;cursor:pointer;
         img {width:100%;}
     }
     .selectimg {border-color:var(--darkborder)};

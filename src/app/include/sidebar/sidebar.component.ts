@@ -20,6 +20,34 @@ export class SidebarComponent implements OnInit {
       link: 'dashboard',
     },
     {
+      title: 'Video Project',
+      icon: 'bar_chart',
+      subMenu: [
+        {
+          title: 'Banner',
+          icon: 'newspaper',
+          link: 'banners',
+        },
+        {
+          title: 'News',
+          icon: 'newspaper',
+          link: 'news',
+        },
+        {
+          title: 'Movies',
+          icon: 'movie',
+          link: 'movies',
+        },
+        {
+          title: 'Web Serise',
+          icon: 'video',
+          link: 'web-serise',
+        },
+      ],
+    },
+
+
+    {
       title: 'Post',
       icon: 'bar_chart',
       subMenu: [
@@ -79,17 +107,7 @@ export class SidebarComponent implements OnInit {
       icon: 'settings',
       link: '',
     },
-    // {
-    //   title: 'Blog',
-    //   icon: 'rss_feed',
-    //   link: 'blogs',
-    // },
     
-    // {
-    //   title: 'Forms',
-    //   icon: 'design_services',
-    //   link: 'forms',
-    // }
   ];
 
 

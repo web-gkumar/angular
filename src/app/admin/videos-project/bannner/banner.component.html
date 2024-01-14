@@ -1,0 +1,71 @@
+<section class="pagetitle bg-white">
+    <h3 class="m-0">Banners</h3>
+</section>
+
+
+
+<section class="row mx-0 my-4">
+    <div class="col-md-4">
+        <div class="bg-white p-3 hv-100">
+            <h3>Add News Items</h3>
+            <form [formGroup]="bannerForm">
+                <mat-form-field class="w-100">
+                    <mat-label>Banner Title</mat-label>
+                    <input matInput formControlName="title">
+                </mat-form-field>
+        
+                <mat-form-field class="w-100">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput formControlName="description"></textarea>
+                </mat-form-field>
+
+                <div class="my-3">
+                    <div class="featureimagelist">
+                        <div class="d-flex align-items-center justify-content-center h-100" (click)="featureImg()">
+                          <input type="text" hidden formControlName="featureimage" [(ngModel)]="posterimage">
+                          <span *ngIf="!posterimage">Set Featured Image</span>
+                          <span *ngIf="posterimage && posterimage.length > 0">
+                            <img [src]="posterimage">
+                          </span>
+                        </div>
+                        <div class="featureoption align-items-between" *ngIf="posterimage && posterimage.length > 0">
+                          <span (click)="featureImg()">Replace</span>
+                          <span (click)="removeFeatureImg()">Remove</span>
+                        </div>
+                      </div>
+                </div>
+                  <button mat-stroked-button color="primary" class="w-100" [disabled]="bannerForm.invalid" (click)="addNews()"><small>{{isbutton ? 'Update': 'Add New'}}</small></button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <section class="bg-white">
+            <table class="table table-striped border">
+                <thead>
+                    <tr class="text-left">
+                        <th>Action</th>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="gridData">
+                    <tr *ngFor='let item of gridData; let i = index;'>
+                        <td>
+                            <button mat-icon-button (click)="update(item, item.id)"><mat-icon>edit</mat-icon></button>
+                            <button mat-icon-button (click)="delete(item, item.id)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                        <td>{{item.id}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.posterimg}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <p *ngIf="gridData">{{'Total Items:' + gridData.length}}</p>
+    </div>
+</section>

@@ -81,8 +81,8 @@ export class CrudService {
     return this.db.collection(this.collectionName).doc(id).update(data);
   }
 
-  delete(id: string) {
-    return this.db.collection(this.collectionName).doc(id).delete();
+  delete(id: string, collectionName:any) {
+    return this.db.collection(collectionName).doc(id).delete();
   }
 
 }
